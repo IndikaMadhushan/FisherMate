@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane stylesheets="@../styles/globals.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fishermen.weatherapp.controller.DashboardController">
+
+   <!-- Header -->
+   <top>
+      <HBox alignment="CENTER_LEFT" spacing="20.0" styleClass="header-bar">
+         <padding>
+            <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
+         </padding>
+
+         <HBox alignment="CENTER_LEFT" spacing="10.0">
+            <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/anchor-icon.png" />
+               </image>
+            </ImageView>
+            <Text styleClass="header-title" text="Fisherman's Weather App" />
+         </HBox>
+
+         <Region HBox.hgrow="ALWAYS" />
+
+         <HBox alignment="CENTER_RIGHT" spacing="10.0">
+            <Label fx:id="welcomeLabel" styleClass="welcome-text" text="Welcome, Captain" />
+            <Button fx:id="historyButton" onAction="#handleHistory" styleClass="secondary-button" text="History" />
+            <Button fx:id="logoutButton" onAction="#handleLogout" styleClass="secondary-button" text="Logout" />
+         </HBox>
+      </HBox>
+   </top>
+
+   <center>
+      <ScrollPane fitToWidth="true" styleClass="scroll-pane">
+         <HBox alignment="TOP_CENTER" spacing="20.0">
+            <padding>
+               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </padding>
+
+            <!-- Trip Planning Panel -->
+            <VBox prefWidth="400.0" spacing="15.0" styleClass="card">
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
+
+               <HBox alignment="CENTER_LEFT" spacing="10.0">
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/anchor-icon.png" />
+                     </image>
+                  </ImageView>
+                  <Text styleClass="card-title" text="Plan Your Fishing Trip" />
+               </HBox>
+
+               <Text styleClass="card-subtitle" text="Enter your trip details to get safety assessment and resource calculations" />
+
+               <GridPane hgap="10.0" vgap="10.0">
+                  <columnConstraints>
+                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                  </columnConstraints>
+
+                  <VBox spacing="5.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                     <Label styleClass="form-label" text="Duration (days):" />
+                     <TextField fx:id="durationField" promptText="3" styleClass="form-field" />
+                  </VBox>
+
+                  <VBox spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                     <Label styleClass="form-label" text="Crew Size:" />
+                     <TextField fx:id="crewSizeField" promptText="4" styleClass="form-field" />
+                  </VBox>
+                  <rowConstraints>
+                     <RowConstraints />
+                  </rowConstraints>
+               </GridPane>
+
+               <VBox spacing="5.0">
+                  <Label styleClass="form-label" text="Distance (nautical miles):" />
+                  <TextField fx:id="distanceField" promptText="50" styleClass="form-field" />
+               </VBox>
+
+               <VBox spacing="5.0">
+                  <Label styleClass="form-label" text="Fishing Location:" />
+                  <ComboBox fx:id="locationCombo" maxWidth="Infinity" styleClass="form-field" />
+               </VBox>
+
+               <Button fx:id="calculateButton" maxWidth="Infinity" onAction="#handleCalculate" styleClass="primary-button" text="Calculate Trip Requirements" />
+            </VBox>
+
+            <!-- Results Panel -->
+            <VBox prefWidth="400.0" spacing="15.0">
+
+               <!-- Weather Card -->
+               <VBox fx:id="weatherCard" spacing="10.0" styleClass="card" visible="false">
+                  <padding>
+                     <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                  </padding>
+
+                  <HBox alignment="CENTER_LEFT" spacing="10.0">
+                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@../images/cloud-icon.png" />
+                        </image>
+                     </ImageView>
+                     <Text styleClass="card-title" text="Current Weather Conditions" />
+                  </HBox>
+
+                  <GridPane fx:id="weatherGrid" hgap="10.0" vgap="5.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                     </columnConstraints>
+                  </GridPane>
+               </VBox>
+
+               <!-- Safety Assessment Card -->
+               <VBox fx:id="safetyCard" spacing="10.0" styleClass="card" visible="false">
+                  <padding>
+                     <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                  </padding>
+
+                  <HBox alignment="CENTER_LEFT" spacing="10.0">
+                     <ImageView fx:id="safetyIcon" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" />
+                     <Text styleClass="card-title" text="Trip Safety Assessment" />
+                  </HBox>
+
+                  <HBox alignment="CENTER_LEFT" spacing="10.0">
+                     <Text styleClass="form-label" text="Safety Score:" />
+                     <Label fx:id="safetyScoreLabel" styleClass="safety-score" />
+                  </HBox>
+
+                  <Label fx:id="safetyStatusLabel" styleClass="safety-status" />
+
+                  <VBox fx:id="warningsBox" spacing="5.0" visible="false">
+                     <Text styleClass="form-label" text="Warnings:" />
+                     <VBox fx:id="warningsList" spacing="3.0" />
+                  </VBox>
+               </VBox>
+
+               <!-- Resources Card -->
+               <VBox fx:id="resourcesCard" spacing="10.0" styleClass="card" visible="false">
+                  <padding>
+                     <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                  </padding>
+
+                  <Text styleClass="card-title" text="Required Resources" />
+
+                  <VBox spacing="8.0">
+                     <HBox alignment="CENTER_LEFT" spacing="10.0" styleClass="resource-item food">
+                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/food-icon.png" />
+                           </image>
+                        </ImageView>
+                        <Text text="Food Required" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Label fx:id="foodLabel" styleClass="resource-value" />
+                     </HBox>
+
+                     <HBox alignment="CENTER_LEFT" spacing="10.0" styleClass="resource-item water">
+                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/water-icon.png" />
+                           </image>
+                        </ImageView>
+                        <Text text="Water Required" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Label fx:id="waterLabel" styleClass="resource-value" />
+                     </HBox>
+
+                     <HBox alignment="CENTER_LEFT" spacing="10.0" styleClass="resource-item fuel">
+                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/fuel-icon.png" />
+                           </image>
+                        </ImageView>
+                        <Text text="Fuel Required" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Label fx:id="fuelLabel" styleClass="resource-value" />
+                     </HBox>
+                  </VBox>
+               </VBox>
+            </VBox>
+         </HBox>
+      </ScrollPane>
+   </center>
+</BorderPane>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="com.fishermen.weatherapp.controller.HistoryController"
+stylesheets="@../styles/globals.css">
+   
+   <!-- Header -->
+   <top>
+      <HBox alignment="CENTER_LEFT" spacing="20.0" styleClass="header-bar">
+         <padding>
+            <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
+         </padding>
+         
+         <HBox alignment="CENTER_LEFT" spacing="10.0">
+            <Button fx:id="backButton" onAction="#handleBack" text="← Back to Dashboard" styleClass="secondary-button" />
+            <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/anchor-icon.png" />
+               </image>
+            </ImageView>
+            <Text styleClass="header-title" text="Trip History" />
+         </HBox>
+         
+         <Region HBox.hgrow="ALWAYS" />
+         
+         <Button fx:id="clearAllButton" onAction="#handleClearAll" text="Clear All" 
+                 styleClass="danger-button" visible="false" />
+      </HBox>
+   </top>
+
+   <center>
+      <VBox spacing="20.0">
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+         
+         <!-- Empty State -->
+         <VBox fx:id="emptyState" alignment="CENTER" spacing="20.0" styleClass="empty-state" visible="true">
+            <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/anchor-icon.png" />
+               </image>
+            </ImageView>
+            <Text styleClass="empty-title" text="No Safe Trips Yet" />
+            <Text styleClass="empty-subtitle" text="Complete safe fishing trips to see them appear in your history." />
+            <Button fx:id="planTripButton" onAction="#handlePlanTrip" text="Plan Your First Trip" 
+                    styleClass="primary-button" />
+         </VBox>
+         
+         <!-- History Content -->
+         <VBox fx:id="historyContent" spacing="15.0" visible="false">
+            <HBox alignment="CENTER_LEFT" spacing="10.0">
+               <Text fx:id="historyCountLabel" styleClass="history-count" text="Safe Fishing Trips (0)" />
+               <Region HBox.hgrow="ALWAYS" />
+               <Label text="All trips shown were deemed safe" styleClass="safe-badge" />
+            </HBox>
+            
+            <ScrollPane fitToWidth="true" styleClass="scroll-pane">
+               <VBox fx:id="historyList" spacing="10.0" />
+            </ScrollPane>
+         </VBox>
+      </VBox>
+   </center>
+</BorderPane>
