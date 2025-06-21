@@ -15,7 +15,7 @@
 
 <BorderPane fx:id="borderPane" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fishermatenew.controller.LoginController">
    <center>
-      <VBox alignment="CENTER" maxWidth="489.0" prefHeight="400.0" prefWidth="300.0" spacing="20.0" styleClass="login-container">
+      <VBox alignment="CENTER" maxWidth="489.0" prefHeight="500.0" prefWidth="300.0" spacing="20.0" styleClass="login-container">
          <padding>
             <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
          </padding>
@@ -30,6 +30,7 @@
             <Text styleClass="title-text" text="Welcome Back" />
             <Text styleClass="subtitle-text" text="Sign in to your fisherman account" />
          </VBox>
+         <Label fx:id="txterror" prefHeight="18.0" prefWidth="226.0" style="-fx-alignment: center; -fx-font-weight: 400; -fx-text-fill: red; -fx-font-family: 'Times New Roman'; -fx-font-size: 15;" styleClass="loginlable" textAlignment="CENTER" />
 
          <!-- Login Form -->
          <VBox spacing="15.0">
