@@ -4,7 +4,7 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class Encyptor {
+public class Encryptor {
     public String encryptString(String input) throws NoSuchAlgorithmException {
         if (input == null || input.isEmpty()) {
             throw new IllegalArgumentException("Input string cannot be null or empty");
