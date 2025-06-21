@@ -1,0 +1,50 @@
+
+.login{
+-fx-background-color:linear-gradient(to bottom right, #238b45, #00441b);
+}
+
+
+.btn{
+-fx-background-color:linear-gradient(to bottom right, #238b45, #00441b);
+-fx-text-fill: white;
+-fx-border-width: 2px;
+-fx-border-color: "black";
+-fx-font-family: "Times New Roman";
+}
+
+.btn:hover{
+-fx-background-color:linear-gradient(to bottom right, #a1d99b, #41ab5d);
+-fx-text-fill: "black";
+-fx-font-weight: bold;
+
+}
+.admin-btn{
+    -fx-background-color:transparent;
+    -fx-font-family: "Times New Roman";
+    -fx-font-size: 14px;
+
+}
+
+.admin-btn:hover {
+    -fx-background-color:linear-gradient(to bottom right, #238b45, #00441b);
+    -fx-border-color: "black";
+    -fx-font-weight: bold;
+    -fx-font-family: "Times New Roman";
+}
+.register-text{
+    -font-size: 14px;
+    -fx-font-family: "Times New Roman";
+    -fx-text-fill:  #00441b;
+    -fx-font-weight: bold;
+}
+
+.close{
+    -fx-background-color: #660000;
+    -fx-text-weight:bold;
+    -fx-text-fill: white;
+    -fx-font-family: "Times New Roman";
+}
+.close:hover{
+    -fx-font-size:14px;
+    -fx-text-weight:bold;
+}
