@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="adminpane" prefHeight="484.0" prefWidth="831.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.fishermate.Admincontroller">
+<AnchorPane fx:id="adminpane" prefHeight="484.0" prefWidth="831.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fishermatenew.controller.AdminController">
    <children>
       <AnchorPane prefHeight="34.0" prefWidth="831.0" style="-fx-background-color: #00441b;">
          <children>
