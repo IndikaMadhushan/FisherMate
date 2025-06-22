@@ -75,14 +75,14 @@
       </AnchorPane>
       <AnchorPane layoutX="177.0" layoutY="46.0" prefHeight="388.0" prefWidth="640.0">
          <children>
-            <AnchorPane fx:id="registerform" layoutX="62.0" layoutY="-1.0" prefHeight="425.0" prefWidth="562.0">
+            <AnchorPane fx:id="registerform" layoutX="44.0" layoutY="-6.0" prefHeight="425.0" prefWidth="562.0">
                <children>
-                  <Label fx:id="lblfname" layoutX="27.0" layoutY="72.0" styleClass="register-text" stylesheets="@styles/application.css" text="Fist Name">
+                  <Label fx:id="lblfname" layoutX="26.0" layoutY="70.0" styleClass="register-text" stylesheets="@styles/application.css" text="Fist Name">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtfname" layoutX="26.0" layoutY="88.0" prefHeight="26.0" prefWidth="300.0" promptText="Enter fist name" />
+                  <TextField fx:id="txtfname" layoutX="25.0" layoutY="86.0" prefHeight="26.0" prefWidth="162.0" promptText="Enter fist name" />
                   <Label fx:id="lbluname" layoutX="24.0" layoutY="180.0" prefHeight="18.0" prefWidth="67.0" styleClass="register-text" stylesheets="@styles/application.css" text="Username">
                      <font>
                         <Font size="14.0" />
@@ -96,8 +96,8 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtlname" layoutX="25.0" layoutY="142.0" prefHeight="26.0" prefWidth="300.0" promptText="Enter last name" />
-                  <TextField fx:id="txtuname" layoutX="25.0" layoutY="199.0" prefHeight="26.0" prefWidth="300.0" promptText="Enter username" />
+                  <TextField fx:id="txtlname" layoutX="25.0" layoutY="142.0" prefHeight="26.0" prefWidth="162.0" promptText="Enter last name" />
+                  <TextField fx:id="txtuname" layoutX="25.0" layoutY="199.0" prefHeight="26.0" prefWidth="162.0" promptText="Enter username" />
                   <Label fx:id="lblpassword" layoutX="25.0" layoutY="235.0" styleClass="register-text" stylesheets="@styles/application.css" text="Password">
                      <font>
                         <Font size="14.0" />
@@ -108,8 +108,8 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <PasswordField fx:id="password1" layoutX="26.0" layoutY="251.0" prefHeight="26.0" prefWidth="300.0" promptText="Enter a password" />
-                  <PasswordField fx:id="confirmpassword" layoutX="26.0" layoutY="307.0" prefHeight="26.0" prefWidth="300.0" promptText="Confirm password" />
+                  <PasswordField fx:id="password1" layoutX="26.0" layoutY="251.0" prefHeight="26.0" prefWidth="162.0" promptText="Enter a password" />
+                  <PasswordField fx:id="confirmpassword" layoutX="26.0" layoutY="307.0" prefHeight="26.0" prefWidth="162.0" promptText="Confirm password" />
                   <Button fx:id="btnregister" layoutX="423.0" layoutY="372.0" mnemonicParsing="false" onAction="#onClickRegister" prefHeight="26.0" prefWidth="119.0" style="-fx-background-color: #00441b; -fx-font-weight: bold;" text="Register" textFill="WHITE">
                      <font>
                         <Font name="Times New Roman" size="15.0" />
@@ -121,14 +121,14 @@
                         <Font name="System Bold" size="26.0" />
                      </font>
                   </Label>
-                  <AnchorPane layoutX="403.0" layoutY="98.0" prefHeight="158.0" prefWidth="139.0" style="-fx-border-color: #00441b;">
+                  <AnchorPane layoutX="427.0" layoutY="18.0" prefHeight="131.0" prefWidth="126.0" style="-fx-border-color: #00441b;">
                      <children>
-                        <Button layoutX="35.0" layoutY="132.0" mnemonicParsing="false" onMouseClicked="#importImage" prefHeight="26.0" prefWidth="67.0" style="-fx-background-color: #00441b;" text="Import" textFill="#fff6f6">
+                        <Button layoutX="36.0" layoutY="108.0" mnemonicParsing="false" onMouseClicked="#importImage" prefHeight="26.0" prefWidth="67.0" style="-fx-background-color: #00441b;" text="Import" textFill="#fff6f6">
                            <font>
                               <Font name="Times New Roman" size="14.0" />
                            </font>
                         </Button>
-                        <ImageView fx:id="newUserImage" fitHeight="125.0" fitWidth="139.0" layoutX="-1.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="newUserImage" fitHeight="93.0" fitWidth="98.0" layoutX="14.0" pickOnBounds="true" preserveRatio="true" />
                      </children>
                   </AnchorPane>
                   <Button fx:id="btnregister1" layoutX="288.0" layoutY="372.0" mnemonicParsing="false" onAction="#reset" prefHeight="26.0" prefWidth="119.0" style="-fx-background-color: #00441b; -fx-font-weight: bold;" text="Reset" textFill="WHITE">
@@ -136,6 +136,30 @@
                         <Font name="Times New Roman" size="15.0" />
                      </font>
                   </Button>
+                  <Label fx:id="lblfname1" layoutX="244.0" layoutY="67.0" styleClass="register-text" stylesheets="@styles/application.css" text="Boat Type">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtfname1" layoutX="243.0" layoutY="83.0" prefHeight="26.0" prefWidth="162.0" promptText="Enter boat type" />
+                  <Label fx:id="lblfname2" layoutX="246.0" layoutY="127.0" styleClass="register-text" stylesheets="@styles/application.css" text="Typical Crew Size">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtfname2" layoutX="245.0" layoutY="143.0" prefHeight="26.0" prefWidth="162.0" promptText="Enter fist name" />
+                  <Label fx:id="lblfname3" layoutX="244.0" layoutY="178.0" styleClass="register-text" stylesheets="@styles/application.css" text="Home Port">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtfname3" layoutX="243.0" layoutY="194.0" prefHeight="26.0" prefWidth="162.0" promptText="Enter fist name" />
+                  <Label fx:id="lblfname4" layoutX="244.0" layoutY="235.0" styleClass="register-text" stylesheets="@styles/application.css" text="License Number">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtfname4" layoutX="243.0" layoutY="251.0" prefHeight="26.0" prefWidth="162.0" promptText="Enter fist name" />
                </children>
             </AnchorPane>
          </children>
