@@ -48,3 +48,8 @@
     -fx-font-size:14px;
     -fx-text-weight:bold;
 }
+
+.login-container {
+    -fx-background-color:linear-gradient(to bottom right, #238b45, #00441b);
+    -fx-background-radius: 12;
+}
