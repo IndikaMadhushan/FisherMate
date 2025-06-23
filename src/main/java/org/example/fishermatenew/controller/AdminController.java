@@ -46,6 +46,9 @@ public class AdminController implements Initializable {
     private Button btnregister;
 
     @FXML
+    private Button btnregister1;
+
+    @FXML
     private PasswordField confirmpassword;
 
     @FXML
@@ -55,13 +58,22 @@ public class AdminController implements Initializable {
     private AnchorPane historypane;
 
     @FXML
-    private AnchorPane ridespane;
-
-    @FXML
     private Label lblconfirmpassword;
 
     @FXML
     private Label lblfname;
+
+    @FXML
+    private Label lblfname1;
+
+    @FXML
+    private Label lblfname2;
+
+    @FXML
+    private Label lblfname3;
+
+    @FXML
+    private Label lblfname4;
 
     @FXML
     private Label lbllname;
@@ -76,25 +88,40 @@ public class AdminController implements Initializable {
     private Label lbluname;
 
     @FXML
+    private ImageView newUserImage;
+
+    @FXML
     private PasswordField password1;
 
     @FXML
     private AnchorPane registerform;
 
     @FXML
+    private AnchorPane ridespane;
+
+    @FXML
+    private TextField txtboat;
+
+    @FXML
+    private TextField txtcrew;
+
+    @FXML
     private TextField txtfname;
 
     @FXML
+    private TextField txtlicense;
+
+    @FXML
     private TextField txtlname;
+
+    @FXML
+    private TextField txtport;
 
     @FXML
     private TextField txtuname;
 
     @FXML
     private Label username;
-
-    @FXML
-    private ImageView newUserImage;
     //    public void initialize(URL url, ResourceBundle resourceBundle){
 //
 //    }resourceBundle
@@ -155,6 +182,10 @@ public class AdminController implements Initializable {
         txtuname.setText("");
         password1.setText("");
         confirmpassword.setText("");
+        txtboat.setText("");
+        txtcrew.setText("");
+        txtport.setText("");
+        txtlicense.setText("");
         newUserImage.setImage(null);
 
     }
@@ -165,11 +196,17 @@ public class AdminController implements Initializable {
         String firstname = txtfname.getText();
         String lastname = txtlname.getText();
         String username = txtuname.getText();
+        String boat = txtboat.getText();
+        String crew = txtcrew.getText();
+        String port = txtport.getText();
+        String license = txtlicense.getText();
         String password2 = password1.getText();
         String password = encryptor.encryptString(password2);
-        String uri = getData.path.replace("\\", "\\\\"); // Escape backslashes for SQL
+        String uri = getData.path.replace("\\", "\\\\");
+        // Escape backslashes for SQL
 
-        String insertFields = "INSERT INTO login (firstname, lastname, username, password, image) VALUES (?, ?, ?, ?, ?)";
+
+        String insertFields = "INSERT INTO login (firstname, lastname, username, password, image,crew,boat,license,port) VALUES (?, ?, ?, ?, ?, ?,?, ?, ?)";
 
         try {
             PreparedStatement pstmt = connectDB.prepareStatement(insertFields);
@@ -178,6 +215,10 @@ public class AdminController implements Initializable {
             pstmt.setString(3, username);
             pstmt.setString(4, password);
             pstmt.setString(5, uri);
+            pstmt.setString(6, license);
+            pstmt.setString(7, crew);
+            pstmt.setString(8, boat);
+            pstmt.setString(9, port);
 
             pstmt.executeUpdate();
 
