@@ -22,6 +22,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Objects;
 
+import static org.example.fishermatenew.dao.getData.role;
+
 public class LoginController {
 
     @FXML
@@ -83,7 +85,8 @@ public class LoginController {
         DBconnection connectNow = new DBconnection();
         Connection connectDB = connectNow.getConnection();
 
-        String verifyLogin = "SELECT COUNT(1) FROM login WHERE username = ? AND password = ?";
+        // Correct SQL query
+        String verifyLogin = "SELECT role FROM login WHERE username = ? AND password = ?";
 
         try {
             Encryptor encryptor = new Encryptor();
@@ -93,16 +96,26 @@ public class LoginController {
             PreparedStatement pstmt = connectDB.prepareStatement(verifyLogin);
             pstmt.setString(1, username.getText());
             pstmt.setString(2, encryptedPassword);
+
             ResultSet rs = pstmt.executeQuery();
 
-            if (rs.next() && rs.getInt(1) == 1) {
+            if (rs.next()) {
                 String u1 = username.getText();
+                String u2 = rs.getString("role"); // Retrieve role as a string
+
                 getData.username = u1;
-                if (u1.equals("admin") && a.equals("admin")) {
+                getData.role = u2;
+
+                // Role-based navigation
+                if ("ADMIN".equalsIgnoreCase(u2)) {
                     adminpg(event);
-                } else {
+                } else if ("USER".equalsIgnoreCase(u2)) {
                     userpg(event);
+                } else {
+                    txterror.setText("Invalid role. Access denied.");
                 }
+
+                System.out.println("Logged in as: " + u1 + " with role: " + u2);
             } else {
                 txterror.setText("Invalid login. Please try again.");
             }
