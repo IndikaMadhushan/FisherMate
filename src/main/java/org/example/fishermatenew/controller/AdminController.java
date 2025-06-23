@@ -122,6 +122,8 @@ public class AdminController implements Initializable {
 
     @FXML
     private Label username;
+
+
     //    public void initialize(URL url, ResourceBundle resourceBundle){
 //
 //    }resourceBundle
