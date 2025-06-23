@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import org.example.fishermatenew.dao.DBconnection;
 
 import java.io.IOException;
 
@@ -21,6 +22,11 @@ public class HelloApplication extends Application {
     }
 
     public static void main(String[] args) {
+        // Ensure the table is created before launching the application
+        DBconnection dbConnection = new DBconnection();
+        dbConnection.getConnection();
+
+        // Launch the JavaFX application
         launch();
     }
 }

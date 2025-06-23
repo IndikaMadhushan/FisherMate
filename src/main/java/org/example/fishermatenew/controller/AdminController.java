@@ -192,7 +192,7 @@ public class AdminController implements Initializable {
     public void registerUser() throws NoSuchAlgorithmException {
         DBconnection conn = new DBconnection();
         Connection connectDB = conn.getConnection();
-
+        String role = "USER";
         String firstname = txtfname.getText();
         String lastname = txtlname.getText();
         String username = txtuname.getText();
@@ -206,7 +206,7 @@ public class AdminController implements Initializable {
         // Escape backslashes for SQL
 
 
-        String insertFields = "INSERT INTO login (firstname, lastname, username, password, image,crew,boat,license,port) VALUES (?, ?, ?, ?, ?, ?,?, ?, ?)";
+        String insertFields = "INSERT INTO login (firstname, lastname, username, password, image,crew,boat,license,port,role) VALUES (?, ?, ?, ?, ?, ?,?, ?, ?,?)";
 
         try {
             PreparedStatement pstmt = connectDB.prepareStatement(insertFields);
@@ -219,6 +219,7 @@ public class AdminController implements Initializable {
             pstmt.setString(7, crew);
             pstmt.setString(8, boat);
             pstmt.setString(9, port);
+            pstmt.setString(10, role);
 
             pstmt.executeUpdate();
 
@@ -291,8 +292,8 @@ public class AdminController implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Login.fxml"));
             Parent root = fxmlLoader.load(); // Load the FXML and get the Parent object
             Stage registerStage = new Stage();
-            registerStage.initStyle(StageStyle.UNDECORATED);
-            registerStage.setScene(new Scene(root, 600, 400)); // Pass the Parent object to the Scene
+            registerStage.initStyle(StageStyle.TRANSPARENT);
+            registerStage.setScene(new Scene(root, 300, 500)); // Pass the Parent object to the Scene
             registerStage.setTitle("Registration Page");
             registerStage.setResizable(false);
             registerStage.show();

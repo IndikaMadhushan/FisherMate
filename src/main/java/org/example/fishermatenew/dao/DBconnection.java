@@ -9,24 +9,27 @@ import java.sql.Statement;
 public class DBconnection {
 
     public Connection conn;
+    String sql = "CREATE TABLE IF NOT EXISTS login (" +
+            "id INT AUTO_INCREMENT PRIMARY KEY, " +
+            "firstname VARCHAR(255) NOT NULL, " +
+            "lastname VARCHAR(255) NOT NULL, " +
+            "username VARCHAR(255) UNIQUE NOT NULL, " +
+            "password VARCHAR(255) NOT NULL, " +
+            "image VARCHAR(255), " +
+            "crew VARCHAR(255), " +
+            "boat VARCHAR(255), " +
+            "license VARCHAR(255), " +
+            "role VARCHAR(255), " +
+            "port VARCHAR(255)" +
+
+            ");";
 
     public Connection getConnection() {
         String url = "jdbc:mysql://localhost:3306/fishermate";
         String username = "root";
         String password = "";
 
-        String sql = "CREATE TABLE IF NOT EXISTS login (" +
-                "id INT AUTO_INCREMENT PRIMARY KEY, " +
-                "firstname VARCHAR(255) NOT NULL, " +
-                "lastname VARCHAR(255) NOT NULL, " +
-                "username VARCHAR(255) UNIQUE NOT NULL, " +
-                "password VARCHAR(255) NOT NULL, " +
-                "image VARCHAR(255), " +
-                "crew VARCHAR(255), " +
-                "boat VARCHAR(255), " +
-                "license VARCHAR(255), " +
-                "port VARCHAR(255)" +
-                ");";
+
 
 
         try {
