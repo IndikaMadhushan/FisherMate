@@ -18,7 +18,7 @@ import org.example.fishermatenew.HelloApplication;
 import org.example.fishermatenew.config.Encryptor;
 import org.example.fishermatenew.dao.DBconnection;
 import org.example.fishermatenew.dao.getData;
-import org.w3c.dom.Text;
+import javafx.scene.text.Text;
 
 import java.awt.event.MouseEvent;
 import java.io.File;
@@ -42,46 +42,50 @@ public class UserController {
     private Button btnlogout;
 
     @FXML
-    private Button history;
-
-    @FXML
-    private AnchorPane historypane;
-
-    @FXML
-    private AnchorPane ridespane;
-
-    @FXML
-    private AnchorPane pwdpane;
-
-
-    @FXML
-    private Button changepwd;
-
-    @FXML
-    private Label username;
-
-    @FXML
     private Button btnreset;
 
     @FXML
     private Button btnupdate;
 
     @FXML
-    private Text txtconfirm;
+    private Button changepwd;
 
     @FXML
-    private TextField txtconfirmpwd;
+    private Button history;
+
+    @FXML
+    private AnchorPane historypane;
+
+    @FXML
+    private AnchorPane pwdpane;
+
+    @FXML
+    private AnchorPane ridespane;
+
+    @FXML
+    private Label lblconfirm;
+
+    @FXML
+    private PasswordField txtconfirmpwd;
 
     @FXML
     private Text txtnew;
 
     @FXML
-    private TextField txtnewpwd;
+    private PasswordField txtnewpwd;
 
     @FXML
-    void update(ActionEvent event) {
+    private Label username;
+
+    // In UserController.java
+
+    @FXML
+    void update(ActionEvent event) throws NoSuchAlgorithmException {
+        Encryptor encryptor = new Encryptor();
         String newPassword = txtnewpwd.getText();
         String confirmPassword = txtconfirmpwd.getText();
+
+
 
         if (newPassword.isEmpty() || confirmPassword.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -100,26 +104,53 @@ public class UserController {
             alert.showAndWait();
             return;
         }
+        String encryptedPassword = encryptor.encryptString(newPassword);
 
-        // Here you would typically update the password in the database
-        // For demonstration, we will just show a success message
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Success");
-        alert.setHeaderText(null);
-        alert.setContentText("Password updated successfully!");
-        alert.showAndWait();
+
+        DBconnection connectNow = new DBconnection();
+        Connection connectDB = connectNow.getConnection();
+        String updateQuery = "UPDATE login SET password = ? WHERE username = ?";
+
+        try (PreparedStatement pstmt = connectDB.prepareStatement(updateQuery)) {
+            pstmt.setString(1, encryptedPassword);
+            pstmt.setString(2, getData.username);
+            int rows = pstmt.executeUpdate();
+
+            if (rows > 0) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Success");
+                alert.setHeaderText(null);
+                alert.setContentText("Password updated successfully!");
+                alert.showAndWait();
+            } else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText(null);
+                alert.setContentText("Failed to update password. User not found.");
+                alert.showAndWait();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Database Error");
+            alert.setHeaderText(null);
+            alert.setContentText("An error occurred while updating the password.");
+            alert.showAndWait();
+        }
 
         txtconfirmpwd.clear();
         txtnewpwd.clear();
 
     }
 
+    public void close(ActionEvent event){
+        Stage stage = (Stage) btnclose.getScene().getWindow();
+        stage.close();
+    }
     @FXML
-    void close(MouseEvent event) {
-
+    void reset(ActionEvent event) {
         txtconfirmpwd.setText("");
         txtnewpwd.setText("");
-
     }
 
     @FXML
