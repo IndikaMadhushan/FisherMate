@@ -85,7 +85,16 @@ public class UserController implements Initializable {
         String newPassword = txtnewpwd.getText();
         String confirmPassword = txtconfirmpwd.getText();
 
-
+        // Password strength validation
+        String passwordPattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$";
+        if (!newPassword.matches(passwordPattern)) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Weak Password");
+            alert.setHeaderText(null);
+            alert.setContentText("Password must be at least 8 characters long and include uppercase, lowercase, digit, and special character.");
+            alert.showAndWait();
+            return;
+        }
 
         if (newPassword.isEmpty() || confirmPassword.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
