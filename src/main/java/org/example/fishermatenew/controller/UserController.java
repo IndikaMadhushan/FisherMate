@@ -27,7 +27,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class UserController {
+public class UserController implements Initializable {
 
     @FXML
     private AnchorPane adminpane;
@@ -208,6 +208,17 @@ public class UserController {
         }
     }
 
-
+    @Override
+    public void initialize(java.net.URL url, java.util.ResourceBundle resourceBundle) {
+        displaUsername();
+    }
+    public void displaUsername() {
+        if (getData.username != null && !getData.username.isEmpty()) {
+            System.out.println("Username found: " + getData.username); // Debug log
+            username.setText(getData.username); // Display the username
+        } else {
+            System.out.println("No username found in getData");
+        }
+    }
 
 }
