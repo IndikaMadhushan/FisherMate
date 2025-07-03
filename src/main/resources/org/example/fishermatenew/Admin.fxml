@@ -18,7 +18,7 @@
 
 <AnchorPane fx:id="adminpane" prefHeight="484.0" prefWidth="831.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fishermatenew.controller.AdminController">
    <children>
-      <AnchorPane prefHeight="34.0" prefWidth="831.0" style="-fx-background-color: #00441b;">
+      <AnchorPane prefHeight="34.0" prefWidth="831.0" style="-fx-background-color: transparent;" visible="false">
          <children>
             <Label layoutX="45.0" layoutY="12.0" text="FisherMate" textFill="WHITE">
                <font>
@@ -33,7 +33,7 @@
             <Image url="@Images/login.png" />
          </image>
       </ImageView>
-      <AnchorPane layoutY="34.0" prefHeight="451.0" prefWidth="168.0" styleClass="login" stylesheets="@styles/application.css">
+      <AnchorPane prefHeight="485.0" prefWidth="168.0" styleClass="login" stylesheets="@styles/application.css">
          <children>
             <ImageView fitHeight="96.0" fitWidth="93.0" layoutX="38.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -121,7 +121,7 @@
                      </font>
                   </Button>
                   <Label fx:id="lblmismatch" layoutX="147.0" layoutY="290.0" prefHeight="18.0" prefWidth="210.0" textFill="RED" />
-                  <Label layoutX="182.0" layoutY="14.0" style="-fx-text-fill: #00441b;" text="User Registration">
+                  <Label layoutX="175.0" style="-fx-text-fill: #00441b;" text="User Registration">
                      <font>
                         <Font name="System Bold" size="26.0" />
                      </font>
