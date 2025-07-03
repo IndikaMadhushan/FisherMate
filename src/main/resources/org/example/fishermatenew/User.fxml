@@ -12,9 +12,9 @@
 
 <AnchorPane fx:id="adminpane" prefHeight="484.0" prefWidth="831.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fishermatenew.controller.UserController">
    <children>
-      <AnchorPane prefHeight="34.0" prefWidth="831.0" style="-fx-background-color: #00441b;">
+      <AnchorPane prefHeight="34.0" prefWidth="831.0" style="-fx-background-color: #00441b;" visible="false">
          <children>
-            <Label layoutX="45.0" layoutY="12.0" text="FisherMate" textFill="WHITE">
+            <Label layoutX="45.0" layoutY="12.0" text="FisherMate" textFill="WHITE" visible="false">
                <font>
                   <Font name="Times New Roman Bold" size="12.0" />
                </font>
@@ -27,7 +27,7 @@
             <Image url="@Images/login.png" />
          </image>
       </ImageView>
-      <AnchorPane layoutY="34.0" prefHeight="451.0" prefWidth="168.0" styleClass="login" stylesheets="@styles/application.css">
+      <AnchorPane prefHeight="485.0" prefWidth="168.0" styleClass="login" stylesheets="@styles/application.css">
          <children>
             <ImageView fitHeight="96.0" fitWidth="93.0" layoutX="38.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -72,17 +72,12 @@
             </Button>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="historypane" layoutX="207.0" layoutY="58.0" prefHeight="397.0" prefWidth="572.0" visible="false">
-         <children>
-            <Label layoutX="94.0" layoutY="110.0" text="history" />
-         </children>
-      </AnchorPane>
       <AnchorPane fx:id="ridespane" layoutX="226.0" layoutY="77.0" prefHeight="343.0" prefWidth="546.0" visible="false">
          <children>
             <Label layoutX="95.0" layoutY="76.0" text="rides" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="pwdpane" layoutX="232.0" layoutY="77.0" prefHeight="359.0" prefWidth="534.0">
+      <AnchorPane fx:id="pwdpane" layoutX="232.0" layoutY="77.0" prefHeight="359.0" prefWidth="534.0" visible="false">
          <children>
             <Label layoutX="205.0" layoutY="23.0" style="-fx-text-fill: #00441b;" text="Change Password">
                <font>
@@ -104,6 +99,11 @@
             <Label fx:id="lblconfirm" layoutX="149.0" layoutY="193.0" prefHeight="18.0" prefWidth="273.0" />
             <PasswordField fx:id="txtnewpwd" layoutX="294.0" layoutY="91.0" />
             <PasswordField fx:id="txtconfirmpwd" layoutX="294.0" layoutY="135.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="historypane" layoutX="207.0" layoutY="58.0" prefHeight="397.0" prefWidth="572.0" visible="false">
+         <children>
+            <Label layoutX="94.0" layoutY="110.0" prefHeight="86.0" prefWidth="36.0" text="history" />
          </children>
       </AnchorPane>
    </children>

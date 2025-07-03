@@ -74,6 +74,7 @@ public class LoginController {
         stage1.close();
         Stage stage = new Stage();
         stage.getIcons().add(new Image(getClass().getResourceAsStream("/org/example/fishermatenew/Images/login.png")));
+        stage.setResizable(false);
         stage.setTitle("FiserMate");
         scene = new Scene(root);
         stage.setScene(scene);
