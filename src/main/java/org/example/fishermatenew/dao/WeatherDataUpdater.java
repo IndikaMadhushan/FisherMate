@@ -123,7 +123,5 @@ public class WeatherDataUpdater {
     }
 
 
-    public static void main(String[] args) {
-        updateWeatherData();
-    }
+
 }

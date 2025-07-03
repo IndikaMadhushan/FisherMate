@@ -1,5 +1,7 @@
 package org.example.fishermatenew;
 
+import org.example.fishermatenew.dao.WeatherDataUpdater;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -27,6 +29,7 @@ public class HelloApplication extends Application {
         dbConnection.getConnection();
 
         // Launch the JavaFX application
+        WeatherDataUpdater.updateWeatherData();
         launch();
     }
 }
