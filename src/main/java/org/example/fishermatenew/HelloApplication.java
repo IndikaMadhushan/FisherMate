@@ -3,6 +3,7 @@ package org.example.fishermatenew;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import org.example.fishermatenew.dao.DBconnection;
@@ -14,7 +15,8 @@ public class HelloApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Login.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 300, 500);
-        stage.initStyle(StageStyle.TRANSPARENT);
+        stage.initStyle(StageStyle.UNIFIED);
+        stage.getIcons().add(new Image(String.valueOf(getClass().getResource("/org/example/fishermatenew/Images/login.png"))));
         stage.setTitle("FisherMate");
         stage.setResizable(false);
         stage.setScene(scene);
