@@ -21,6 +21,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Objects;
+import java.awt.Desktop;
+import java.net.URI;
+
+
 
 import static org.example.fishermatenew.dao.getData.role;
 
@@ -71,6 +75,13 @@ public class LoginController {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+    public void onContactUsClick() {
+        try {
+            Desktop.getDesktop().mail(new URI("mailto:support@example.com?subject=Contact%20Us"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void userpg(ActionEvent event) throws IOException {
