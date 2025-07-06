@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.example.fishermatenew.dao.DBconnection;
@@ -67,7 +68,14 @@ public class LoginController {
     }
     public void adminpg(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/org/example/fishermatenew/Admin.fxml")));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        //stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        //CATCHING THE PREVOIUS STAGE AND CLOSE IT( log IN)
+        Stage stage1 = (Stage)btnlogin.getScene().getWindow();
+        stage1.close();
+        Stage stage = new Stage();
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/org/example/fishermatenew/Images/login.png")));
+        stage.setResizable(false);
+        stage.setTitle("FiserMate");
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
@@ -75,7 +83,14 @@ public class LoginController {
 
     public void userpg(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/org/example/fishermatenew/User.fxml")));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        //stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        //CATCHING THE PREVOIUS STAGE AND CLOSE IT( log IN)
+        Stage stage1 = (Stage)btnlogin.getScene().getWindow();
+        stage1.close();
+        Stage stage = new Stage();
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/org/example/fishermatenew/Images/login.png")));
+        stage.setTitle("FiserMate");
+
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
@@ -116,6 +131,7 @@ public class LoginController {
                 }
 
                 System.out.println("Logged in as: " + u1 + " with role: " + u2);
+
             } else {
                 txterror.setText("Invalid login. Please try again.");
             }
