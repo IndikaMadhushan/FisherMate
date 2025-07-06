@@ -78,105 +78,9 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="177.0" layoutY="46.0" prefHeight="388.0" prefWidth="640.0" visible="false">
+      <AnchorPane fx:id="ridespane" layoutX="177.0" layoutY="46.0" onDragDetected="#switchform" prefHeight="426.0" prefWidth="640.0">
          <children>
-            <AnchorPane fx:id="registerform" layoutX="44.0" layoutY="-6.0" prefHeight="425.0" prefWidth="562.0">
-               <children>
-                  <Label fx:id="lblfname" layoutX="26.0" layoutY="70.0" styleClass="register-text" stylesheets="@styles/application.css" text="Fist Name">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="txtfname" layoutX="25.0" layoutY="86.0" prefHeight="26.0" prefWidth="162.0" />
-                  <Label fx:id="lbluname" layoutX="24.0" layoutY="180.0" prefHeight="18.0" prefWidth="67.0" styleClass="register-text" stylesheets="@styles/application.css" text="Username">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="lbllname" layoutX="25.0" layoutY="126.0" styleClass="register-text" stylesheets="@styles/application.css" text="Last Name">
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="txtlname" layoutX="25.0" layoutY="142.0" prefHeight="26.0" prefWidth="162.0" />
-                  <TextField fx:id="txtuname" layoutX="25.0" layoutY="199.0" prefHeight="26.0" prefWidth="162.0" />
-                  <Label fx:id="lblpassword" layoutX="25.0" layoutY="235.0" styleClass="register-text" stylesheets="@styles/application.css" text="Password">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="lblconfirmpassword" layoutX="25.0" layoutY="291.0" styleClass="register-text" stylesheets="@styles/application.css" text="Confirm Password">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <PasswordField fx:id="password1" layoutX="26.0" layoutY="251.0" prefHeight="26.0" prefWidth="162.0" promptText="ex:123@Hello" />
-                  <PasswordField fx:id="confirmpassword" layoutX="26.0" layoutY="307.0" prefHeight="26.0" prefWidth="162.0" />
-                  <Button fx:id="btnregister" layoutX="296.0" layoutY="386.0" mnemonicParsing="false" onAction="#onClickRegister" prefHeight="26.0" prefWidth="119.0" style="-fx-background-color: #00441b; -fx-font-weight: bold;" text="Register" textFill="WHITE">
-                     <font>
-                        <Font name="Times New Roman" size="15.0" />
-                     </font>
-                  </Button>
-                  <Label fx:id="lblmismatch" layoutX="147.0" layoutY="290.0" prefHeight="18.0" prefWidth="210.0" textFill="RED" />
-                  <Label layoutX="182.0" layoutY="14.0" style="-fx-text-fill: #00441b;" text="User Registration">
-                     <font>
-                        <Font name="System Bold" size="26.0" />
-                     </font>
-                  </Label>
-                  <AnchorPane layoutX="435.0" layoutY="231.0" prefHeight="131.0" prefWidth="126.0" style="-fx-border-color: #00441b;">
-                     <children>
-                        <Button layoutX="29.0" layoutY="108.0" mnemonicParsing="false" onMouseClicked="#importImage" prefHeight="26.0" prefWidth="67.0" style="-fx-background-color: #00441b;" text="Import" textFill="#fff6f6">
-                           <font>
-                              <Font name="Times New Roman" size="14.0" />
-                           </font>
-                        </Button>
-                        <ImageView fx:id="newUserImage" fitHeight="103.0" fitWidth="98.0" layoutX="14.0" pickOnBounds="true" preserveRatio="true" />
-                     </children>
-                  </AnchorPane>
-                  <Button fx:id="btnregister1" layoutX="147.0" layoutY="386.0" mnemonicParsing="false" onAction="#reset" prefHeight="26.0" prefWidth="119.0" style="-fx-background-color: #00441b; -fx-font-weight: bold;" text="Reset" textFill="WHITE">
-                     <font>
-                        <Font name="Times New Roman" size="15.0" />
-                     </font>
-                  </Button>
-                  <Label fx:id="lblfname1" layoutX="244.0" layoutY="67.0" styleClass="register-text" stylesheets="@styles/application.css" text="Boat Type">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="txtboat" layoutX="243.0" layoutY="83.0" prefHeight="26.0" prefWidth="162.0" />
-                  <Label fx:id="lblfname2" layoutX="246.0" layoutY="127.0" styleClass="register-text" stylesheets="@styles/application.css" text="Typical Crew Size">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="txtcrew" layoutX="245.0" layoutY="143.0" prefHeight="26.0" prefWidth="162.0" promptText="ex:5" />
-                  <Label fx:id="lblfname3" layoutX="244.0" layoutY="178.0" styleClass="register-text" stylesheets="@styles/application.css" text="Home Port">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="txtport" layoutX="243.0" layoutY="194.0" prefHeight="26.0" prefWidth="162.0" promptText="ex: Miami Habor" />
-                  <Label fx:id="lblfname4" layoutX="244.0" layoutY="235.0" styleClass="register-text" stylesheets="@styles/application.css" text="License Number">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="txtlicense" layoutX="243.0" layoutY="251.0" prefHeight="26.0" prefWidth="162.0" />
-               </children>
-            </AnchorPane>
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="historypane" layoutX="207.0" layoutY="58.0" prefHeight="397.0" prefWidth="572.0" visible="false">
-         <children>
-            <AnchorPane fx:id="ridespane" prefHeight="426.0" prefWidth="583.0" visible="false" />
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutX="177.0" layoutY="46.0" prefHeight="426.0" prefWidth="640.0">
-         <children>
-            <VBox layoutX="26.0" layoutY="22.0" prefHeight="426.0" prefWidth="600.0" spacing="15.0" AnchorPane.bottomAnchor="22.799999999999955" AnchorPane.leftAnchor="26.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="22.0">
+            <VBox layoutX="27.2" layoutY="22.0" prefHeight="406.0" prefWidth="599.0" spacing="15.0" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="27.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="22.0">
                <children>
                   <HBox spacing="10">
                      <children>
@@ -221,10 +125,98 @@
                         <Button fx:id="iDreset" onAction="#handleResetButton" prefWidth="100" text="Reset" />
                      </children>
                   </HBox>
-                  <TextArea fx:id="iDresults" prefHeight="98.0" prefWidth="600" />
+                  <TextArea fx:id="iDresults" prefHeight="94.0" prefWidth="598.0" />
                   <Label fx:id="idMainMessage" textFill="#dd0c0c" />
                </children>
             </VBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="historypane" layoutX="224.0" layoutY="56.0" onDragDetected="#switchform" prefHeight="406.0" prefWidth="571.0" visible="false" />
+      <AnchorPane fx:id="registerform" layoutX="206.0" layoutY="46.0" onDragDetected="#switchform" prefHeight="425.0" prefWidth="562.0" visible="false">
+         <children>
+            <Label fx:id="lblfname" layoutX="26.0" layoutY="70.0" styleClass="register-text" stylesheets="@styles/application.css" text="Fist Name">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtfname" layoutX="25.0" layoutY="86.0" prefHeight="26.0" prefWidth="162.0" />
+            <Label fx:id="lbluname" layoutX="24.0" layoutY="180.0" prefHeight="18.0" prefWidth="67.0" styleClass="register-text" stylesheets="@styles/application.css" text="Username">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbllname" layoutX="25.0" layoutY="126.0" styleClass="register-text" stylesheets="@styles/application.css" text="Last Name">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtlname" layoutX="25.0" layoutY="142.0" prefHeight="26.0" prefWidth="162.0" />
+            <TextField fx:id="txtuname" layoutX="25.0" layoutY="199.0" prefHeight="26.0" prefWidth="162.0" />
+            <Label fx:id="lblpassword" layoutX="25.0" layoutY="235.0" styleClass="register-text" stylesheets="@styles/application.css" text="Password">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblconfirmpassword" layoutX="25.0" layoutY="291.0" styleClass="register-text" stylesheets="@styles/application.css" text="Confirm Password">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <PasswordField fx:id="password1" layoutX="26.0" layoutY="251.0" prefHeight="26.0" prefWidth="162.0" promptText="ex:123@Hello" />
+            <PasswordField fx:id="confirmpassword" layoutX="26.0" layoutY="307.0" prefHeight="26.0" prefWidth="162.0" />
+            <Button fx:id="btnregister" layoutX="296.0" layoutY="386.0" mnemonicParsing="false" onAction="#onClickRegister" prefHeight="26.0" prefWidth="119.0" style="-fx-background-color: #00441b; -fx-font-weight: bold;" text="Register" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman" size="15.0" />
+               </font>
+            </Button>
+            <Label fx:id="lblmismatch" layoutX="147.0" layoutY="290.0" prefHeight="18.0" prefWidth="210.0" textFill="RED" />
+            <Label layoutX="182.0" layoutY="14.0" style="-fx-text-fill: #00441b;" text="User Registration">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </Label>
+            <AnchorPane layoutX="435.0" layoutY="231.0" prefHeight="131.0" prefWidth="126.0" style="-fx-border-color: #00441b;">
+               <children>
+                  <Button layoutX="29.0" layoutY="108.0" mnemonicParsing="false" onMouseClicked="#importImage" prefHeight="26.0" prefWidth="67.0" style="-fx-background-color: #00441b;" text="Import" textFill="#fff6f6">
+                     <font>
+                        <Font name="Times New Roman" size="14.0" />
+                     </font>
+                  </Button>
+                  <ImageView fx:id="newUserImage" fitHeight="103.0" fitWidth="98.0" layoutX="14.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </AnchorPane>
+            <Button fx:id="btnregister1" layoutX="147.0" layoutY="386.0" mnemonicParsing="false" onAction="#reset" prefHeight="26.0" prefWidth="119.0" style="-fx-background-color: #00441b; -fx-font-weight: bold;" text="Reset" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman" size="15.0" />
+               </font>
+            </Button>
+            <Label fx:id="lblfname1" layoutX="244.0" layoutY="67.0" styleClass="register-text" stylesheets="@styles/application.css" text="Boat Type">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtboat" layoutX="243.0" layoutY="83.0" prefHeight="26.0" prefWidth="162.0" />
+            <Label fx:id="lblfname2" layoutX="246.0" layoutY="127.0" styleClass="register-text" stylesheets="@styles/application.css" text="Typical Crew Size">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtcrew" layoutX="245.0" layoutY="143.0" prefHeight="26.0" prefWidth="162.0" promptText="ex:5" />
+            <Label fx:id="lblfname3" layoutX="244.0" layoutY="178.0" styleClass="register-text" stylesheets="@styles/application.css" text="Home Port">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtport" layoutX="243.0" layoutY="194.0" prefHeight="26.0" prefWidth="162.0" promptText="ex: Miami Habor" />
+            <Label fx:id="lblfname4" layoutX="244.0" layoutY="235.0" styleClass="register-text" stylesheets="@styles/application.css" text="License Number">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtlicense" layoutX="243.0" layoutY="251.0" prefHeight="26.0" prefWidth="162.0" />
          </children>
       </AnchorPane>
    </children>
