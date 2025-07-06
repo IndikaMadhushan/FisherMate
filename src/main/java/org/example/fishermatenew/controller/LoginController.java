@@ -78,7 +78,7 @@ public class LoginController {
     }
     public void onContactUsClick() {
         try {
-            Desktop.getDesktop().mail(new URI("mailto:support@example.com?subject=Contact%20Us"));
+            Desktop.getDesktop().mail(new URI("mailto:fishermate@gmail.com?subject=Join%20Us"));
         } catch (Exception e) {
             e.printStackTrace();
         }
