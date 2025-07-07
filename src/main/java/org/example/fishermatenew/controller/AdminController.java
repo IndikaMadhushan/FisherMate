@@ -420,9 +420,11 @@ public class AdminController implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Login.fxml"));
             Parent root = fxmlLoader.load(); // Load the FXML and get the Parent object
             Stage registerStage = new Stage();
-            registerStage.initStyle(StageStyle.TRANSPARENT);
+            registerStage.initStyle(StageStyle.UNIFIED);
             registerStage.setScene(new Scene(root, 300, 500)); // Pass the Parent object to the Scene
-            registerStage.setTitle("Registration Page");
+            registerStage.getIcons().add(new Image(getClass().getResourceAsStream("/org/example/fishermatenew/Images/login.png")));
+
+            registerStage.setTitle("FisherMate");
             registerStage.setResizable(false);
             registerStage.show();
         } catch (Exception e) {
