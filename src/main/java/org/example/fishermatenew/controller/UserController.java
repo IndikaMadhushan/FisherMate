@@ -26,6 +26,7 @@ import org.example.fishermatenew.models.Inputs;
 
 import java.awt.event.MouseEvent;
 import java.io.File;
+import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -113,7 +114,8 @@ public class UserController implements Initializable {
 
     @FXML
     private Label username;
-
+    @FXML
+    private AnchorPane registerform;
     // In UserController.java
 
     @FXML
@@ -217,28 +219,9 @@ public class UserController implements Initializable {
     }
 
 
+   
     @FXML
-    public void switchform(ActionEvent event){
-
-        if(event.getSource()== changepwd){
-            pwdpane.setVisible(true);
-            historypane.setVisible(false);
-            ridespane.setVisible(false);
-
-        } else if (event.getSource() == history) {
-            pwdpane.setVisible(false);
-            historypane.setVisible(true);
-            ridespane.setVisible(false);
-
-        }else if (event.getSource() == boatrides) {
-            pwdpane.setVisible(false);
-            historypane.setVisible(false);
-            ridespane.setVisible(true);
-
-        }
-    }
-    @FXML
-    public void handleEnterButton() {
+    /*public void handleEnterButton() {
         String location = iDlocation.getValue();
         LocalDate date = iDdate.getValue();
         String time = iDtime.getValue();
@@ -324,7 +307,7 @@ public class UserController implements Initializable {
         idCrewMessage.setText("");
         idMainMessage.setText("");
     }
-
+*/
 
     public void onclicklogout(){
         try {
@@ -346,7 +329,7 @@ public class UserController implements Initializable {
     @Override
     public void initialize(java.net.URL url, java.util.ResourceBundle resourceBundle) {
         displaUsername();
-        iDlocation.getItems().addAll(
+       /* iDlocation.getItems().addAll(
                 "Galle", "Matara", "Hambantota", "Trincomalee", "Jaffna",
                 "Negombo", "Colombo", "Batticaloa", "Kalpitiya"
         );
@@ -363,9 +346,40 @@ public class UserController implements Initializable {
 
 
         // Validate selected date
-
+        */
     }
-    private Callback<DatePicker, DateCell> getDateCellFactory() {
+    public void switchform(ActionEvent event){
+          if (event.getSource() == history) {
+            registerform.setVisible(false);
+            historypane.setVisible(true);
+            ridespane.setVisible(false);
+
+        } else if (event.getSource() == boatrides) {
+            registerform.setVisible(false);
+            historypane.setVisible(false);
+            ridespane.setVisible(true);
+
+            // Load the interface.fxml into ridespane
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/fishermatenew/interface.fxml"));
+                Node interfaceView = loader.load(); // This loads the FXML content
+
+                // Clear previous content and add the new FXML content
+                ridespane.getChildren().clear();
+                ridespane.getChildren().add(interfaceView);
+
+                // Optional: Anchor the loaded node to fill the ridespane
+                AnchorPane.setTopAnchor(interfaceView, 0.0);
+                AnchorPane.setBottomAnchor(interfaceView, 0.0);
+                AnchorPane.setLeftAnchor(interfaceView, 0.0);
+                AnchorPane.setRightAnchor(interfaceView, 0.0);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    /*private Callback<DatePicker, DateCell> getDateCellFactory() {
         return datePicker -> new DateCell() {
             @Override
             public void updateItem(LocalDate item, boolean empty) {
@@ -380,7 +394,7 @@ public class UserController implements Initializable {
                 }
             }
         };
-    }
+    }*/
     public void displaUsername() {
         if (getData.username != null && !getData.username.isEmpty()) {
             System.out.println("Username found: " + getData.username); // Debug log
