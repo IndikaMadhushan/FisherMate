@@ -513,9 +513,10 @@ public class AdminController implements Initializable {
         iDdate.getEditor().setDisable(true);
         iDdate.getEditor().setOpacity(1); // Keep it visually visible (not greyed out)
 
-
-        // Validate selected date
-
+        //select which pane shows when the admin log in
+        registerform.setVisible(true);
+        ridespane.setVisible(false);
+        historypane.setVisible(false);
     }
 
     private Callback<DatePicker, DateCell> getDateCellFactory() {
