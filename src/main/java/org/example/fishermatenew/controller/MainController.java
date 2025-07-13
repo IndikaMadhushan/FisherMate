@@ -1,13 +1,21 @@
 package org.example.fishermatenew.controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 import org.example.fishermatenew.models.DateTimeIntergration;
 import org.example.fishermatenew.models.FinalDecision;
 import org.example.fishermatenew.models.Inputs;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
@@ -47,10 +55,17 @@ public class MainController implements Initializable {
     @FXML
     private Label idMainMessage;
 
+    @FXML
+    private AnchorPane afterEnter;
+
+    @FXML
+    private AnchorPane beforeEnter;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        beforeEnter.setVisible(true);
+        afterEnter.setVisible(false);
         iDlocation.getItems().addAll(
                 "Galle", "Matara", "Hambantota", "Trincomalee", "Jaffna",
                 "Negombo", "Colombo", "Batticaloa", "Kalpitiya"
@@ -70,6 +85,7 @@ public class MainController implements Initializable {
         // Validate selected date
 
     }
+
 
     private Callback<DatePicker, DateCell> getDateCellFactory() {
         return datePicker -> new DateCell() {
@@ -97,7 +113,6 @@ public class MainController implements Initializable {
         String crewsText = iDcrews.getText().trim();
         String maxDaysText = iDmaxdays.getText().trim();
 
-        // Validate all required fields are filled
         if (location == null || date == null || time == null || crewsText.isEmpty() || maxDaysText.isEmpty()) {
             idMainMessage.setText("❌ Please fill in all the fields.");
             return;
@@ -105,63 +120,83 @@ public class MainController implements Initializable {
 
         int crews, maxDays;
 
-        // Validate crews input
         try {
             crews = Integer.parseInt(crewsText);
-            if (crews < 0) {
-                throw new NumberFormatException();
-            }
+            if (crews < 0) throw new NumberFormatException();
         } catch (NumberFormatException e) {
             iDcrews.clear();
             idCrewMessage.setText("❌ Enter a valid number (0 or more) for crew members.");
             return;
         }
 
-        // Validate maxDays input
         try {
             maxDays = Integer.parseInt(maxDaysText);
-            if (maxDays < 0) {
-                throw new NumberFormatException();
-            }
+            if (maxDays < 0) throw new NumberFormatException();
         } catch (NumberFormatException e) {
             iDmaxdays.clear();
             idMaxDayMessage.setText("❌ Enter a valid number (0 or more) for max days.");
             return;
         }
 
-        if(date.equals(LocalDate.now())){
-            if(Integer.parseInt(maxDaysText) > 3){
-                idMaxDayMessage.setText("❌ Max days should be equal to or less than 3 days.");
-                return;
-            }
+        if (date.equals(LocalDate.now()) && maxDays > 3) {
+            idMaxDayMessage.setText("❌ Max days should be equal to or less than 3 days.");
+            return;
         }
-        if(date.equals(LocalDate.now().plusDays(1))){
-            if(Integer.parseInt(maxDaysText) > 2){
-                idMaxDayMessage.setText("❌ Max days should be equal to or less than 2 days.");
-                return;
-            }
+        if (date.equals(LocalDate.now().plusDays(1)) && maxDays > 2) {
+            idMaxDayMessage.setText("❌ Max days should be equal to or less than 2 days.");
+            return;
         }
-        if(date.equals(LocalDate.now().plusDays(2))){
-            if(Integer.parseInt(maxDaysText) > 1){
-                idMaxDayMessage.setText("❌ Max days should be equal to or less than 1 days.");
-                return;
-            }
+        if (date.equals(LocalDate.now().plusDays(2)) && maxDays > 1) {
+            idMaxDayMessage.setText("❌ Max days should be equal to or less than 1 day.");
+            return;
         }
 
-        // If all inputs are valid, process them
-        idMaxDayMessage.setText("");
-        idCrewMessage.setText("");
-        idMainMessage.setText("");
-
+        // Prepare input
         Inputs inputData = new Inputs();
         inputData.setLocation(location);
         DateTimeIntergration.datetimeintegration(date.toString(), time, inputData);
         inputData.setNoOfCrewMembers(crews);
         inputData.setMaxDays(maxDays);
 
+        // Get final result
         String result = FinalDecision.finalDecision(inputData);
-        iDresults.setText(result);
+        beforeEnter.setVisible(false);
+        afterEnter.setVisible(true);
+        // 🔄 Load results.fxml and send the result
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/fishermatenew/Results.fxml"));
+            Node interfaceView = loader.load(); // This loads the FXML content
+
+            // Clear previous content and add the new FXML content
+            afterEnter.getChildren().clear();
+            afterEnter.getChildren().add(interfaceView);
+
+            // Optional: Anchor the loaded node to fill the ridespane
+            AnchorPane.setTopAnchor(interfaceView, 0.0);
+            AnchorPane.setBottomAnchor(interfaceView, 0.0);
+            AnchorPane.setLeftAnchor(interfaceView, 0.0);
+            AnchorPane.setRightAnchor(interfaceView, 0.0);
+
+
+            // Get the controller of results.fxml
+            ResultsController resultsController = loader.getController();
+            resultsController.setResultText(result);
+            resultsController.setMainController(this);   // 👉 pass the result
+
+            // Switch to results scene
+            //Stage stage = (Stage) iDlocation.getScene().getWindow(); // or any other control's scene
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+    public void showInputPaneAgain() {
+        afterEnter.setVisible(false);
+        beforeEnter.setVisible(true);
+        handleResetButton(); // optional: reset fields
+    }
+
 
 
     @FXML

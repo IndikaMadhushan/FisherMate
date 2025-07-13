@@ -9,7 +9,7 @@ public class DataRetriever {
 
         WeatherData weatherData = new WeatherData();
 
-        String url = "jdbc:mysql://localhost:3306/fishermate";
+        String url = "jdbc:mysql://localhost:3306/weather_app";
         String username = "root";
         String password = "";
 

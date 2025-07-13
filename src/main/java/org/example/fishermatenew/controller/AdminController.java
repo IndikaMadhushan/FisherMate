@@ -167,7 +167,7 @@ public class AdminController implements Initializable {
     //    public void initialize(URL url, ResourceBundle resourceBundle){
 //
 //    }resourceBundle
-    @FXML
+
    /* public void handleEnterButton() {
         String location = iDlocation.getValue();
         LocalDate date = iDdate.getValue();
@@ -505,6 +505,8 @@ public class AdminController implements Initializable {
                 AnchorPane.setBottomAnchor(interfaceView, 0.0);
                 AnchorPane.setLeftAnchor(interfaceView, 0.0);
                 AnchorPane.setRightAnchor(interfaceView, 0.0);
+
+
 
             } catch (IOException e) {
                 e.printStackTrace();
