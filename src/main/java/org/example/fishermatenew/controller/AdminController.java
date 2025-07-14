@@ -24,6 +24,7 @@ import org.example.fishermatenew.models.FinalDecision;
 import org.example.fishermatenew.models.Inputs;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
@@ -169,8 +170,8 @@ public class AdminController implements Initializable {
     //    public void initialize(URL url, ResourceBundle resourceBundle){
 //
 //    }resourceBundle
-    @FXML
-    public void handleEnterButton() {
+
+   /* public void handleEnterButton() {
         String location = iDlocation.getValue();
         LocalDate date = iDdate.getValue();
         String time = iDtime.getValue();
@@ -255,7 +256,7 @@ public class AdminController implements Initializable {
         idMaxDayMessage.setText("");
         idCrewMessage.setText("");
         idMainMessage.setText("");
-    }
+    }*/
     Encryptor encryptor = new Encryptor();
     private Image image;
     private PreparedStatement PreparedStatement;
@@ -476,9 +477,9 @@ public class AdminController implements Initializable {
             System.out.println("No username found in getData");
         }
     }
-    public void switchform(ActionEvent event){
 
-        if(event.getSource()== addnewuser){
+    public void switchform(ActionEvent event){
+        if(event.getSource() == addnewuser){
             registerform.setVisible(true);
             historypane.setVisible(false);
             ridespane.setVisible(false);
@@ -488,20 +489,39 @@ public class AdminController implements Initializable {
             historypane.setVisible(true);
             ridespane.setVisible(false);
 
-        }else if (event.getSource() == boatrides) {
+        } else if (event.getSource() == boatrides) {
             registerform.setVisible(false);
             historypane.setVisible(false);
             ridespane.setVisible(true);
 
+            // Load the interface.fxml into ridespane
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/fishermatenew/interface.fxml"));
+                Node interfaceView = loader.load(); // This loads the FXML content
+
+                // Clear previous content and add the new FXML content
+                ridespane.getChildren().clear();
+                ridespane.getChildren().add(interfaceView);
+
+                // Optional: Anchor the loaded node to fill the ridespane
+                AnchorPane.setTopAnchor(interfaceView, 0.0);
+                AnchorPane.setBottomAnchor(interfaceView, 0.0);
+                AnchorPane.setLeftAnchor(interfaceView, 0.0);
+                AnchorPane.setRightAnchor(interfaceView, 0.0);
+
+
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
-
 
 
     @Override
     public void initialize(java.net.URL url, java.util.ResourceBundle resourceBundle) {
         displaUsername();
-        iDlocation.getItems().addAll(
+        /*iDlocation.getItems().addAll(
                 "Galle", "Matara", "Hambantota", "Trincomalee", "Jaffna",
                 "Negombo", "Colombo", "Batticaloa", "Kalpitiya"
         );
@@ -516,13 +536,17 @@ public class AdminController implements Initializable {
         iDdate.getEditor().setDisable(true);
         iDdate.getEditor().setOpacity(1); // Keep it visually visible (not greyed out)
 
+
+
+        // Validate selected date
+        */
+
         //select which pane shows when the admin log in
-        registerform.setVisible(true);
-        ridespane.setVisible(false);
-        historypane.setVisible(false);
+       
+
     }
 
-    private Callback<DatePicker, DateCell> getDateCellFactory() {
+    /*private Callback<DatePicker, DateCell> getDateCellFactory() {
         return datePicker -> new DateCell() {
             @Override
             public void updateItem(LocalDate item, boolean empty) {
@@ -537,5 +561,5 @@ public class AdminController implements Initializable {
                 }
             }
         };
-    }
+    }*/
 }
