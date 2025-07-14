@@ -9,6 +9,10 @@ import java.sql.Statement;
 public class DBconnection {
 
     public Connection conn;
+    //query to create the database automatically
+    String createDB = "CREATE DATABASE IF NOT EXISTS fishermate";
+
+    //query for create the log in table automatically
     String sql = "CREATE TABLE IF NOT EXISTS login (" +
             "id INT AUTO_INCREMENT PRIMARY KEY, " +
             "firstname VARCHAR(255) NOT NULL, " +
@@ -21,16 +25,23 @@ public class DBconnection {
             "license VARCHAR(255), " +
             "role VARCHAR(255), " +
             "port VARCHAR(255)" +
-
             ");";
+
+    //query to create the weather_data table automatically
+    String createWeatherDataTable = "CREATE TABLE IF NOT EXISTS weather_data(" +
+            "id INT AUTO_INCREMENT PRIMARY KEY,"+
+            "location VARCHAR(100)," +
+            "forecast_time TIME," +
+            "wind_speed DOUBLE," +
+            "rain_probability DOUBLE," +
+            "visibility DOUBLE," +
+            "weather_condition VARCHAR(100)"+
+    ")";
 
     public Connection getConnection() {
         String url = "jdbc:mysql://localhost:3306/fishermate";
         String username = "root";
         String password = "";
-
-
-
 
         try {
             // Use the updated MySQL driver class
@@ -39,8 +50,14 @@ public class DBconnection {
             System.out.println("Database connected successfully!");
 
             Statement stmt = conn.createStatement();
+            //create the database
+            stmt.executeUpdate(createDB);
+            System.out.println("database created successfully");
             stmt.executeUpdate(sql);
             System.out.println("Login table created successfully!");
+            stmt.executeUpdate(createWeatherDataTable);
+            System.out.println("weather table created successfully");
+
 
         } catch (SQLException e) {
             System.out.println("Database connection failed: " + e.getMessage());

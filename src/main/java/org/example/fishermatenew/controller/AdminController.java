@@ -164,6 +164,9 @@ public class AdminController implements Initializable {
     private Label username;
 
 
+
+
+
     //    public void initialize(URL url, ResourceBundle resourceBundle){
 //
 //    }resourceBundle
@@ -534,8 +537,13 @@ public class AdminController implements Initializable {
         iDdate.getEditor().setOpacity(1); // Keep it visually visible (not greyed out)
 
 
+
         // Validate selected date
         */
+
+        //select which pane shows when the admin log in
+       
+
     }
 
     /*private Callback<DatePicker, DateCell> getDateCellFactory() {
