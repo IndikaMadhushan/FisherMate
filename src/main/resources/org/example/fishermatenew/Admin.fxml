@@ -11,6 +11,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
@@ -56,6 +57,9 @@
                   <Font size="14.0" />
                </font>
             </Button>
+
+
+
             <Button fx:id="history" layoutX="9.0" layoutY="240.0" mnemonicParsing="false" onAction="#switchform" prefHeight="43.0" prefWidth="139.0" styleClass="admin-btn" stylesheets="@styles/application.css" text="History" textFill="WHITE">
                <font>
                   <Font size="14.0" />
@@ -131,7 +135,11 @@
             </VBox>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="historypane" layoutX="224.0" layoutY="56.0" onDragDetected="#switchform" prefHeight="406.0" prefWidth="571.0" visible="false" />
+      <BorderPane layoutX="224.0" layoutY="56.0" fx:id="histroypage">
+         <center>
+            <fx:include source="history.fxml"/>
+         </center>
+      </BorderPane>
       <AnchorPane fx:id="registerform" layoutX="206.0" layoutY="46.0" onDragDetected="#switchform" prefHeight="425.0" prefWidth="562.0" visible="false">
          <children>
             <Label fx:id="lblfname" layoutX="26.0" layoutY="70.0" styleClass="register-text" stylesheets="@styles/application.css" text="Fist Name">

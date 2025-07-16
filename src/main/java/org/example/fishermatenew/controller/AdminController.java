@@ -11,6 +11,8 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -33,6 +35,7 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class AdminController implements Initializable {
+    public BorderPane histroypage;
     @FXML
     private TextArea iDcrews;
 
@@ -387,20 +390,23 @@ public class AdminController implements Initializable {
             e.printStackTrace();
         }
     }
-//    public void history(){
-//        try {
-//            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Register.fxml"));
-//            Parent root = fxmlLoader.load(); // Load the FXML and get the Parent object
-//            Stage registerStage = new Stage();
-//            registerStage.initStyle(StageStyle.UNDECORATED);
-//            registerStage.setScene(new Scene(root, 520, 568)); // Pass the Parent object to the Scene
-//            registerStage.setTitle("Registration Page");
-//            registerStage.setResizable(false);
-//            registerStage.show();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
+
+
+    
+    public void history(){
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("history.fxml"));
+            Parent root = fxmlLoader.load(); // Load the FXML and get the Parent object
+            Stage registerStage = new Stage();
+            registerStage.initStyle(StageStyle.UNDECORATED);
+            registerStage.setScene(new Scene(root, 520, 568)); // Pass the Parent object to the Scene
+            registerStage.setTitle("History Page");
+            registerStage.setResizable(false);
+            registerStage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     public void logout(ActionEvent event) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -480,17 +486,17 @@ public class AdminController implements Initializable {
 
         if(event.getSource()== addnewuser){
             registerform.setVisible(true);
-            historypane.setVisible(false);
+            histroypage.setVisible(false);
             ridespane.setVisible(false);
 
         } else if (event.getSource() == history) {
             registerform.setVisible(false);
-            historypane.setVisible(true);
+            histroypage.setVisible(true);
             ridespane.setVisible(false);
 
         }else if (event.getSource() == boatrides) {
             registerform.setVisible(false);
-            historypane.setVisible(false);
+            histroypage.setVisible(false);
             ridespane.setVisible(true);
 
         }
@@ -519,7 +525,7 @@ public class AdminController implements Initializable {
         //select which pane shows when the admin log in
         registerform.setVisible(true);
         ridespane.setVisible(false);
-        historypane.setVisible(false);
+        histroypage.setVisible(false);
     }
 
     private Callback<DatePicker, DateCell> getDateCellFactory() {
