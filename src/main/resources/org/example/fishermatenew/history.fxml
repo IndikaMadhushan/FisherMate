@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.example.fishermatenew.controller.HistoryController"
+            prefHeight="400.0" prefWidth="600.0">
+    <children>
+        <Label layoutX="200.0" layoutY="20.0" text="My Fishing History">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+        <TableView fx:id="historyTable" layoutX="20.0" layoutY="60.0" prefHeight="320.0" prefWidth="560.0">
+            <columns>
+                <TableColumn fx:id="colDate" text="Date" prefWidth="100.0"/>
+                <TableColumn fx:id="colLocation" text="Location" prefWidth="150.0"/>
+                <TableColumn fx:id="colTime" text="Time" prefWidth="100.0"/>
+                <TableColumn fx:id="colCrew" text="Crew Members" prefWidth="100.0"/>
+            </columns>
+        </TableView>
+    </children>
+</AnchorPane>
