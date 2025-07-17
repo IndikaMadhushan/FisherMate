@@ -1,55 +1,85 @@
-
-.login{
--fx-background-color:linear-gradient(to bottom right, #238b45, #00441b);
+/* General Login Background */
+.login {
+    -fx-background-color: linear-gradient(to bottom right, #006994, #00334d); /* Deep sea blues */
 }
 
-
-.btn{
--fx-background-color:linear-gradient(to bottom right, #238b45, #00441b);
--fx-text-fill: white;
--fx-border-width: 2px;
--fx-border-color: "black";
--fx-font-family: "Times New Roman";
-}
-
-.btn:hover{
--fx-background-color:linear-gradient(to bottom right, #a1d99b, #41ab5d);
--fx-text-fill: "black";
--fx-font-weight: bold;
-
-}
-.admin-btn{
-    -fx-background-color:transparent;
-    -fx-font-family: "Times New Roman";
+/* Buttons General */
+.btn {
+    -fx-background-color: linear-gradient(to bottom right, #0099cc, #006994);
+    -fx-text-fill: white;
+    -fx-border-width: 0px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 8px 16px;
+    -fx-font-family: "Segoe UI", sans-serif;
     -fx-font-size: 14px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.2), 2, 0, 0, 1);
+}
 
+/* Buttons on Hover */
+.btn:hover {
+    -fx-background-color: linear-gradient(to bottom right, #33ccff, #0099cc);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+/* Admin Sidebar Buttons */
+.admin-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: #ffffff;
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-font-size: 14px;
+    -fx-padding: 6px 12px;
 }
 
 .admin-btn:hover {
-    -fx-background-color:linear-gradient(to bottom right, #238b45, #00441b);
-    -fx-border-color: "black";
+    -fx-background-color: rgba(255, 255, 255, 0.2);
+    -fx-text-fill: #ffffff;
     -fx-font-weight: bold;
-    -fx-font-family: "Times New Roman";
+    -fx-background-radius: 5px;
 }
-.register-text{
-    -font-size: 14px;
-    -fx-font-family: "Times New Roman";
-    -fx-text-fill:  #00441b;
+
+/* Registration Labels and Texts */
+.register-text {
+    -fx-font-size: 14px;
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-text-fill: #00334d;
     -fx-font-weight: bold;
 }
 
-.close{
-    -fx-background-color: #660000;
-    -fx-text-weight:bold;
+/* Close Button Styling */
+.close {
+    -fx-background-color: #cc0000;
     -fx-text-fill: white;
-    -fx-font-family: "Times New Roman";
-}
-.close:hover{
-    -fx-font-size:14px;
-    -fx-text-weight:bold;
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
 }
 
+.close:hover {
+    -fx-background-color: #ff3333;
+}
+
+/* Login Container Panel Styling */
 .login-container {
-    -fx-background-color:linear-gradient(to bottom right, #238b45, #00441b);
+    -fx-background-color: linear-gradient(to bottom right, #006994, #00334d);
     -fx-background-radius: 12;
+}
+
+/* Text Fields Styling */
+.text-field {
+    -fx-background-color: white;
+    -fx-background-radius: 4px;
+    -fx-border-radius: 4px;
+    -fx-padding: 6px;
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-font-size: 13px;
+}
+
+/* Text Fields Focused Styling */
+.text-field:focused {
+    -fx-border-color: #0099cc;
+    -fx-border-width: 2px;
 }

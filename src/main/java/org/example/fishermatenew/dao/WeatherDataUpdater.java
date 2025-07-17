@@ -16,7 +16,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class WeatherDataUpdater {
-    static final String DB_URL = "jdbc:mysql://localhost:3306/weather_app";
+    static final String DB_URL = "jdbc:mysql://localhost:3306/fishermate";
     static final String DB_USER = "root";
     static final String DB_PASS = "";
 
