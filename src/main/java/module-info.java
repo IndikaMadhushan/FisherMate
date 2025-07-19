@@ -4,6 +4,7 @@ module org.example.fishermatenew {
     requires java.sql;
     requires java.desktop;
     requires org.json;
+    requires itextpdf;
 
     opens org.example.fishermatenew.controller to javafx.fxml;
     opens org.example.fishermatenew to javafx.fxml;
