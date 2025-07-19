@@ -165,8 +165,7 @@ public class AdminController implements Initializable {
     @FXML
     private Label username;
 
-
-
+    DBconnection conn = new DBconnection();
 
 
     //    public void initialize(URL url, ResourceBundle resourceBundle){
@@ -324,7 +323,7 @@ public class AdminController implements Initializable {
 
     }
     public void registerUser() throws NoSuchAlgorithmException {
-        DBconnection conn = new DBconnection();
+//        DBconnection conn = new DBconnection();
         Connection connectDB = conn.getConnection();
         String role = "USER";
         String firstname = txtfname.getText();
@@ -506,6 +505,7 @@ public class AdminController implements Initializable {
 
     @Override
     public void initialize(java.net.URL url, java.util.ResourceBundle resourceBundle) {
+        iDenter.setOnAction(event -> dataToDB());
         displaUsername();
         iDlocation.getItems().addAll(
                 "Galle", "Matara", "Hambantota", "Trincomalee", "Jaffna",
@@ -528,6 +528,45 @@ public class AdminController implements Initializable {
         histroypage.setVisible(false);
     }
 
+    public void dataToDB() {
+        String location = iDlocation.getValue();
+        LocalDate date = iDdate.getValue();
+        String time = iDtime.getValue();
+        int crewMembers = Integer.parseInt(iDcrews.getText());
+       // int noOfDays = Integer.parseInt(iDmaxdays.getText());
+
+        if (location == null || date == null || time == null || crewMembers <= 0 ) {
+            idMainMessage.setText("❌ Please fill in all the fields correctly.");
+            return;
+        }
+
+        String sql = "INSERT INTO history (date, time, crewMembers, location) VALUES (?, ?, ?, ?)";
+
+        try {
+            Connection connection = conn.getConnection();
+            PreparedStatement pstmt = connection.prepareStatement(sql);
+
+            pstmt.setString(1, String.valueOf(date));
+            pstmt.setString(2, time);
+            pstmt.setString(3, String.valueOf(crewMembers));
+            pstmt.setString(4, location);
+            pstmt.executeUpdate();
+
+
+
+            // Optional alert
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Success");
+            alert.setHeaderText(null);
+            alert.setContentText("Boat ride added to history!");
+            alert.showAndWait();
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        }
+    }
+
     private Callback<DatePicker, DateCell> getDateCellFactory() {
         return datePicker -> new DateCell() {
             @Override
@@ -544,4 +583,6 @@ public class AdminController implements Initializable {
             }
         };
     }
-}
+    }
+
+

@@ -135,9 +135,9 @@
             </VBox>
          </children>
       </AnchorPane>
-      <BorderPane layoutX="224.0" layoutY="56.0" fx:id="histroypage">
+      <BorderPane fx:id="histroypage" layoutX="224.0" layoutY="56.0" visible="false">
          <center>
-            <fx:include source="history.fxml"/>
+            <fx:include source="history.fxml" />
          </center>
       </BorderPane>
       <AnchorPane fx:id="registerform" layoutX="206.0" layoutY="46.0" onDragDetected="#switchform" prefHeight="425.0" prefWidth="562.0" visible="false">
