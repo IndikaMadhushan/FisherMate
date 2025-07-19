@@ -11,6 +11,8 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -24,7 +26,6 @@ import org.example.fishermatenew.models.FinalDecision;
 import org.example.fishermatenew.models.Inputs;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
@@ -34,6 +35,7 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class AdminController implements Initializable {
+    public BorderPane histroypage;
     @FXML
     private TextArea iDcrews;
 
@@ -163,15 +165,14 @@ public class AdminController implements Initializable {
     @FXML
     private Label username;
 
-
-
+    DBconnection conn = new DBconnection();
 
 
     //    public void initialize(URL url, ResourceBundle resourceBundle){
 //
 //    }resourceBundle
-
-   /* public void handleEnterButton() {
+    @FXML
+    public void handleEnterButton() {
         String location = iDlocation.getValue();
         LocalDate date = iDdate.getValue();
         String time = iDtime.getValue();
@@ -256,7 +257,7 @@ public class AdminController implements Initializable {
         idMaxDayMessage.setText("");
         idCrewMessage.setText("");
         idMainMessage.setText("");
-    }*/
+    }
     Encryptor encryptor = new Encryptor();
     private Image image;
     private PreparedStatement PreparedStatement;
@@ -322,7 +323,7 @@ public class AdminController implements Initializable {
 
     }
     public void registerUser() throws NoSuchAlgorithmException {
-        DBconnection conn = new DBconnection();
+//        DBconnection conn = new DBconnection();
         Connection connectDB = conn.getConnection();
         String role = "USER";
         String firstname = txtfname.getText();
@@ -388,20 +389,23 @@ public class AdminController implements Initializable {
             e.printStackTrace();
         }
     }
-//    public void history(){
-//        try {
-//            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Register.fxml"));
-//            Parent root = fxmlLoader.load(); // Load the FXML and get the Parent object
-//            Stage registerStage = new Stage();
-//            registerStage.initStyle(StageStyle.UNDECORATED);
-//            registerStage.setScene(new Scene(root, 520, 568)); // Pass the Parent object to the Scene
-//            registerStage.setTitle("Registration Page");
-//            registerStage.setResizable(false);
-//            registerStage.show();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
+
+
+    
+    public void history(){
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("history.fxml"));
+            Parent root = fxmlLoader.load(); // Load the FXML and get the Parent object
+            Stage registerStage = new Stage();
+            registerStage.initStyle(StageStyle.UNDECORATED);
+            registerStage.setScene(new Scene(root, 520, 568)); // Pass the Parent object to the Scene
+            registerStage.setTitle("History Page");
+            registerStage.setResizable(false);
+            registerStage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     public void logout(ActionEvent event) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -477,51 +481,33 @@ public class AdminController implements Initializable {
             System.out.println("No username found in getData");
         }
     }
-
     public void switchform(ActionEvent event){
-        if(event.getSource() == addnewuser){
+
+        if(event.getSource()== addnewuser){
             registerform.setVisible(true);
-            historypane.setVisible(false);
+            histroypage.setVisible(false);
             ridespane.setVisible(false);
 
         } else if (event.getSource() == history) {
             registerform.setVisible(false);
-            historypane.setVisible(true);
+            histroypage.setVisible(true);
             ridespane.setVisible(false);
 
-        } else if (event.getSource() == boatrides) {
+        }else if (event.getSource() == boatrides) {
             registerform.setVisible(false);
-            historypane.setVisible(false);
+            histroypage.setVisible(false);
             ridespane.setVisible(true);
 
-            // Load the interface.fxml into ridespane
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/fishermatenew/interface.fxml"));
-                Node interfaceView = loader.load(); // This loads the FXML content
-
-                // Clear previous content and add the new FXML content
-                ridespane.getChildren().clear();
-                ridespane.getChildren().add(interfaceView);
-
-                // Optional: Anchor the loaded node to fill the ridespane
-                AnchorPane.setTopAnchor(interfaceView, 0.0);
-                AnchorPane.setBottomAnchor(interfaceView, 0.0);
-                AnchorPane.setLeftAnchor(interfaceView, 0.0);
-                AnchorPane.setRightAnchor(interfaceView, 0.0);
-
-
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
     }
 
 
+
     @Override
     public void initialize(java.net.URL url, java.util.ResourceBundle resourceBundle) {
+        iDenter.setOnAction(event -> dataToDB());
         displaUsername();
-        /*iDlocation.getItems().addAll(
+        iDlocation.getItems().addAll(
                 "Galle", "Matara", "Hambantota", "Trincomalee", "Jaffna",
                 "Negombo", "Colombo", "Batticaloa", "Kalpitiya"
         );
@@ -536,17 +522,52 @@ public class AdminController implements Initializable {
         iDdate.getEditor().setDisable(true);
         iDdate.getEditor().setOpacity(1); // Keep it visually visible (not greyed out)
 
-
-
-        // Validate selected date
-        */
-
         //select which pane shows when the admin log in
-       
-
+        registerform.setVisible(true);
+        ridespane.setVisible(false);
+        histroypage.setVisible(false);
     }
 
-    /*private Callback<DatePicker, DateCell> getDateCellFactory() {
+    public void dataToDB() {
+        String location = iDlocation.getValue();
+        LocalDate date = iDdate.getValue();
+        String time = iDtime.getValue();
+        int crewMembers = Integer.parseInt(iDcrews.getText());
+       // int noOfDays = Integer.parseInt(iDmaxdays.getText());
+
+        if (location == null || date == null || time == null || crewMembers <= 0 ) {
+            idMainMessage.setText("❌ Please fill in all the fields correctly.");
+            return;
+        }
+
+        String sql = "INSERT INTO history (date, time, crewMembers, location) VALUES (?, ?, ?, ?)";
+
+        try {
+            Connection connection = conn.getConnection();
+            PreparedStatement pstmt = connection.prepareStatement(sql);
+
+            pstmt.setString(1, String.valueOf(date));
+            pstmt.setString(2, time);
+            pstmt.setString(3, String.valueOf(crewMembers));
+            pstmt.setString(4, location);
+            pstmt.executeUpdate();
+
+
+
+            // Optional alert
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Success");
+            alert.setHeaderText(null);
+            alert.setContentText("Boat ride added to history!");
+            alert.showAndWait();
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        }
+    }
+
+    private Callback<DatePicker, DateCell> getDateCellFactory() {
         return datePicker -> new DateCell() {
             @Override
             public void updateItem(LocalDate item, boolean empty) {
@@ -561,5 +582,7 @@ public class AdminController implements Initializable {
                 }
             }
         };
-    }*/
-}
+    }
+    }
+
+
