@@ -58,7 +58,7 @@
             </Button>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="historypane" layoutX="207.0" layoutY="58.0" prefHeight="397.0" prefWidth="572.0">
+      <AnchorPane fx:id="historypane" layoutX="207.0" layoutY="58.0" prefHeight="397.0" prefWidth="572.0" visible="false">
          <children>
             <BorderPane layoutX="-32.0" layoutY="-41.0" prefHeight="449.0" prefWidth="640.0">
                <center>
@@ -67,21 +67,21 @@
             </BorderPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="pwdpane" layoutX="232.0" layoutY="77.0" prefHeight="359.0" prefWidth="534.0" visible="false">
+      <AnchorPane fx:id="pwdpane" layoutX="232.0" layoutY="77.0" prefHeight="359.0" prefWidth="534.0">
          <children>
-            <Label layoutX="205.0" layoutY="23.0" style="-fx-text-fill: #00441b;" text="Change Password">
+            <Label layoutX="205.0" layoutY="23.0" style="-fx-text-fill: #035c7a;" text="Change Password">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
             <Text fx:id="txtconfirm" layoutX="149.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm Password" />
             <Text fx:id="txtnew" layoutX="149.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Password" />
-            <Button fx:id="btnreset" layoutX="234.0" layoutY="280.0" mnemonicParsing="false" onAction="#reset" prefHeight="26.0" prefWidth="119.0" style="-fx-background-color: #00441b; -fx-font-weight: bold;" text="Reset" textFill="WHITE">
+            <Button fx:id="btnreset" layoutX="234.0" layoutY="280.0" mnemonicParsing="false" onAction="#reset" prefHeight="26.0" prefWidth="119.0" style="-fx-font-weight: bold;" styleClass="btn" stylesheets="@styles/application.css" text="Reset" textFill="WHITE">
                <font>
                   <Font name="Times New Roman" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="btnupdate" layoutX="385.0" layoutY="280.0" mnemonicParsing="false" onAction="#update" prefHeight="26.0" prefWidth="119.0" style="-fx-background-color: #00441b; -fx-font-weight: bold;" text="Update" textFill="WHITE">
+            <Button fx:id="btnupdate" layoutX="385.0" layoutY="280.0" mnemonicParsing="false" onAction="#update" prefHeight="26.0" prefWidth="119.0" style="-fx-font-weight: bold;" styleClass="btn" stylesheets="@styles/application.css" text="Update" textFill="WHITE">
                <font>
                   <Font name="Times New Roman" size="15.0" />
                </font>
@@ -91,7 +91,7 @@
             <PasswordField fx:id="txtconfirmpwd" layoutX="294.0" layoutY="135.0" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="ridespane" layoutX="187.0" layoutY="56.0" onDragDetected="#switchform" prefHeight="426.0" prefWidth="640.0" />
-      <AnchorPane fx:id="registerform" layoutX="167.0" layoutY="7.0" prefHeight="473.0" prefWidth="661.0" />
+      <AnchorPane fx:id="ridespane" layoutX="187.0" layoutY="56.0" onDragDetected="#switchform" prefHeight="426.0" prefWidth="640.0" visible="false" />
+      <AnchorPane fx:id="registerform" layoutX="167.0" layoutY="7.0" prefHeight="473.0" prefWidth="661.0" stylesheets="@styles/application.css" visible="false" />
    </children>
 </AnchorPane>
