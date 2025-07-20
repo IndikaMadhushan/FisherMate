@@ -353,11 +353,13 @@ public class UserController implements Initializable {
             registerform.setVisible(false);
             historypane.setVisible(true);
             ridespane.setVisible(false);
+            pwdpane.setVisible(false);
 
         } else if (event.getSource() == boatrides) {
             registerform.setVisible(false);
             historypane.setVisible(false);
             ridespane.setVisible(true);
+            pwdpane.setVisible(false);
 
             // Load the interface.fxml into ridespane
             try {
@@ -378,6 +380,11 @@ public class UserController implements Initializable {
                 e.printStackTrace();
             }
         }
+          else if (event.getSource()== changepwd) {
+              pwdpane.setVisible(true);
+              historypane.setVisible(false);
+              ridespane.setVisible(false);
+          }
     }
     /*private Callback<DatePicker, DateCell> getDateCellFactory() {
         return datePicker -> new DateCell() {
