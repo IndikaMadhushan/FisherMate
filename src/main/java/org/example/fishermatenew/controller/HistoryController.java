@@ -7,6 +7,12 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.example.fishermatenew.models.HistoryRecord;
+import org.example.fishermatenew.dao.DBconnection;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class HistoryController {
 
@@ -25,6 +31,8 @@ public class HistoryController {
     @FXML
     private TableColumn<HistoryRecord, Integer> colCrew;
 
+    private ObservableList<HistoryRecord> historyList = FXCollections.observableArrayList();
+
     @FXML
     public void initialize() {
         colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
@@ -32,12 +40,31 @@ public class HistoryController {
         colTime.setCellValueFactory(new PropertyValueFactory<>("time"));
         colCrew.setCellValueFactory(new PropertyValueFactory<>("crewMembers"));
 
-        // Example data
-        ObservableList<HistoryRecord> data = FXCollections.observableArrayList(
-                new HistoryRecord("2025-07-10", "Galle", "08:00 AM", 4),
-                new HistoryRecord("2025-07-11", "Matara", "10:30 AM", 3)
-        );
+        loadHistoryData();
+    }
 
-        historyTable.setItems(data);
+    public void loadHistoryData() {
+        historyList.clear();
+        String sql = "SELECT date, time, crewMembers, location FROM history";
+
+        try {
+            DBconnection dBconnection = new DBconnection();
+            Connection conn = dBconnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql);
+             ResultSet rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                historyList.add(new HistoryRecord(
+                        rs.getString("date"),
+                        rs.getString("location"),
+                        rs.getString("time"),
+                        rs.getInt("crewMembers")
+                ));
+            }
+            historyTable.setItems(historyList);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

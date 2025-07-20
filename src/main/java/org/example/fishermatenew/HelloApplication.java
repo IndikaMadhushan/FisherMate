@@ -1,6 +1,8 @@
 package org.example.fishermatenew;
 
+import javafx.scene.Parent;
 import javafx.scene.image.Image;
+import org.example.fishermatenew.controller.HistoryController;
 import org.example.fishermatenew.dao.WeatherDataUpdater;
 
 import javafx.application.Application;

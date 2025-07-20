@@ -7,6 +7,7 @@ module org.example.fishermatenew {
     requires itextpdf;
 
     opens org.example.fishermatenew.controller to javafx.fxml;
+    opens org.example.fishermatenew.models to javafx.base;
     opens org.example.fishermatenew to javafx.fxml;
     exports org.example.fishermatenew;
     exports org.example.fishermatenew.controller to javafx.fxml;

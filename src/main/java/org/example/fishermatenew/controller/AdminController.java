@@ -525,6 +525,17 @@ public class AdminController implements Initializable {
         registerform.setVisible(true);
         ridespane.setVisible(false);
         histroypage.setVisible(false);
+
+        //set history button click event
+        history.setOnAction(event -> onHistoryBtnClick());
+
+    }
+
+    private void onHistoryBtnClick() {
+        histroypage.setVisible(true);
+        registerform.setVisible(false);
+        ridespane.setVisible(false);
+
     }
 
     public void dataToDB() {
