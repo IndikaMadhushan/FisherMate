@@ -6,27 +6,13 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane fx:id="adminpane" prefHeight="484.0" prefWidth="831.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fishermatenew.controller.UserController">
    <children>
-      <AnchorPane prefHeight="34.0" prefWidth="831.0" style="-fx-background-color: #00441b;" visible="false">
-         <children>
-            <Label layoutX="45.0" layoutY="12.0" text="FisherMate" textFill="WHITE">
-               <font>
-                  <Font name="Times New Roman Bold" size="12.0" />
-               </font>
-            </Label>
-            <Button fx:id="btnclose" layoutX="758.0" layoutY="4.0" mnemonicParsing="false" onAction="#close" onMouseClicked="#close" prefHeight="26.0" prefWidth="58.0" styleClass="close" stylesheets="@styles/application.css" text="Close" textFill="WHITE" />
-         </children>
-      </AnchorPane>
-      <ImageView fitHeight="27.0" fitWidth="27.0" layoutX="7.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Images/login.png" />
-         </image>
-      </ImageView>
       <AnchorPane prefHeight="485.0" prefWidth="168.0" styleClass="login" stylesheets="@styles/application.css">
          <children>
             <ImageView fitHeight="96.0" fitWidth="93.0" layoutX="38.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
@@ -72,9 +58,13 @@
             </Button>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="historypane" layoutX="207.0" layoutY="58.0" prefHeight="397.0" prefWidth="572.0" visible="false">
+      <AnchorPane fx:id="historypane" layoutX="207.0" layoutY="58.0" prefHeight="397.0" prefWidth="572.0">
          <children>
-            <Label layoutX="94.0" layoutY="110.0" text="history" />
+            <BorderPane layoutX="-32.0" layoutY="-41.0" prefHeight="449.0" prefWidth="640.0">
+               <center>
+                  <fx:include source="history.fxml" />
+               </center>
+            </BorderPane>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="pwdpane" layoutX="232.0" layoutY="77.0" prefHeight="359.0" prefWidth="534.0" visible="false">
