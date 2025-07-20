@@ -3,6 +3,13 @@
     -fx-background-color: linear-gradient(to bottom right, #006994, #00334d); /* Deep sea blues */
 }
 
+.login-btn:hover {
+    -fx-background-color: black; /* Lighter blue on hover */
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+
 /* Buttons General */
 .btn {
     -fx-background-color: linear-gradient(to bottom right, #0099cc, #006994);
@@ -22,6 +29,7 @@
     -fx-background-color: linear-gradient(to bottom right, #33ccff, #0099cc);
     -fx-text-fill: white;
     -fx-font-weight: bold;
+
 }
 
 /* Admin Sidebar Buttons */
@@ -42,9 +50,9 @@
 
 /* Registration Labels and Texts */
 .register-text {
-    -fx-font-size: 14px;
+    -fx-font-size: 12px;
     -fx-font-family: "Segoe UI", sans-serif;
-    -fx-text-fill: #00334d;
+    -fx-text-fill: #035c7a;
     -fx-font-weight: bold;
 }
 
@@ -82,4 +90,22 @@
 .text-field:focused {
     -fx-border-color: #0099cc;
     -fx-border-width: 2px;
+}
+  /* .label {
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-font-size: 13px;
+    -fx-text-fill: #00334d; 
+} */
+
+/* history page */
+.history-page {
+   // -fx-background-color: #FFFFFF;
+    -fx-padding: 20px;
+}
+
+
+.history-page TableView .column-header .label {
+    -fx-text-fill: #FFFFFF;
+    -fx-background-color: #006994;
+    -fx-font-family: "Segoe UI", sans-serif;
 }

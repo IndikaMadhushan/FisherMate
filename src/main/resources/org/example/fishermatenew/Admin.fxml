@@ -82,13 +82,13 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="ridespane" layoutX="177.0" layoutY="46.0" onDragDetected="#switchform" prefHeight="426.0" prefWidth="640.0">
+      <AnchorPane fx:id="ridespane" layoutX="177.0" layoutY="46.0" onDragDetected="#switchform" prefHeight="426.0" prefWidth="640.0" visible="false">
          <children>
             <VBox layoutX="14.0" layoutY="-32.0" prefHeight="458.0" prefWidth="598.0" spacing="15.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="28.0" AnchorPane.topAnchor="-32.0">
                <children>
-                  <HBox spacing="10">
+                  <HBox prefHeight="37.0" prefWidth="610.0" spacing="10">
                      <children>
-                        <Label prefWidth="150" text="Location" />
+                        <Label prefWidth="150" style="-fx-text-fill:linear-gradient to bottom right, #33ccff, #0099cc" text="Location" />
                         <ChoiceBox fx:id="iDlocation" prefWidth="220" />
                      </children>
                   </HBox>
@@ -125,8 +125,8 @@
                   </HBox>
                   <HBox spacing="20">
                      <children>
-                        <Button fx:id="iDenter" onAction="#handleEnterButton" prefWidth="100" text="Enter" />
-                        <Button fx:id="iDreset" onAction="#handleResetButton" prefWidth="100" text="Reset" />
+                        <Button fx:id="iDenter" onAction="#handleEnterButton" prefWidth="100" styleClass="btn" stylesheets="@styles/application.css" text="Enter" />
+                        <Button fx:id="iDreset" onAction="#handleResetButton" prefWidth="100" styleClass="btn" stylesheets="@styles/application.css" text="Reset" />
                      </children>
                   </HBox>
                   <TextArea fx:id="iDresults" prefHeight="151.0" prefWidth="598.0" />
@@ -140,9 +140,9 @@
             <fx:include source="history.fxml" />
          </center>
       </BorderPane>
-      <AnchorPane fx:id="registerform" layoutX="206.0" layoutY="46.0" onDragDetected="#switchform" prefHeight="425.0" prefWidth="562.0" visible="false">
+      <AnchorPane fx:id="registerform" layoutX="206.0" layoutY="46.0" onDragDetected="#switchform" prefHeight="425.0" prefWidth="562.0">
          <children>
-            <Label fx:id="lblfname" layoutX="26.0" layoutY="70.0" styleClass="register-text" stylesheets="@styles/application.css" text="Fist Name">
+            <Label fx:id="lblfname" layoutX="26.0" layoutY="70.0" styleClass="register-text" stylesheets="@styles/application.css" text="Fist Name" textFill="#0099cc">
                <font>
                   <Font size="14.0" />
                </font>
@@ -175,20 +175,20 @@
             </Label>
             <PasswordField fx:id="password1" layoutX="26.0" layoutY="251.0" prefHeight="26.0" prefWidth="162.0" promptText="ex:123@Hello" />
             <PasswordField fx:id="confirmpassword" layoutX="26.0" layoutY="307.0" prefHeight="26.0" prefWidth="162.0" />
-            <Button fx:id="btnregister" layoutX="296.0" layoutY="386.0" mnemonicParsing="false" onAction="#onClickRegister" prefHeight="26.0" prefWidth="119.0" style="-fx-background-color: #00441b; -fx-font-weight: bold;" text="Register" textFill="WHITE">
+            <Button fx:id="btnregister" layoutX="296.0" layoutY="386.0" mnemonicParsing="false" onAction="#onClickRegister" prefHeight="26.0" prefWidth="119.0" style="-fx-font-weight: bold;" styleClass="btn" stylesheets="@styles/application.css" text="Register" textFill="WHITE">
                <font>
                   <Font name="Times New Roman" size="15.0" />
                </font>
             </Button>
             <Label fx:id="lblmismatch" layoutX="147.0" layoutY="290.0" prefHeight="18.0" prefWidth="210.0" textFill="RED" />
-            <Label layoutX="182.0" layoutY="14.0" style="-fx-text-fill: #00441b;" text="User Registration">
+            <Label layoutX="182.0" layoutY="14.0" text="User Registration" textFill="#035c7a">
                <font>
-                  <Font name="System Bold" size="26.0" />
+                  <Font name="System Bold" size="21.0" />
                </font>
             </Label>
             <AnchorPane layoutX="435.0" layoutY="231.0" prefHeight="131.0" prefWidth="126.0" style="-fx-border-color: #00441b;">
                <children>
-                  <Button layoutX="29.0" layoutY="108.0" mnemonicParsing="false" onMouseClicked="#importImage" prefHeight="26.0" prefWidth="67.0" style="-fx-background-color: #00441b;" text="Import" textFill="#fff6f6">
+                  <Button layoutX="29.0" layoutY="108.0" mnemonicParsing="false" onMouseClicked="#importImage" prefHeight="34.0" prefWidth="78.0" style="-fx-font-weight: bold;" styleClass="btn" stylesheets="@styles/application.css" text="Import" textFill="#fff6f6">
                      <font>
                         <Font name="Times New Roman" size="14.0" />
                      </font>
@@ -196,7 +196,7 @@
                   <ImageView fx:id="newUserImage" fitHeight="103.0" fitWidth="98.0" layoutX="14.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </AnchorPane>
-            <Button fx:id="btnregister1" layoutX="147.0" layoutY="386.0" mnemonicParsing="false" onAction="#reset" prefHeight="26.0" prefWidth="119.0" style="-fx-background-color: #00441b; -fx-font-weight: bold;" text="Reset" textFill="WHITE">
+            <Button fx:id="btnregister1" layoutX="147.0" layoutY="386.0" mnemonicParsing="false" onAction="#reset" prefHeight="26.0" prefWidth="119.0" style="-fx-font-weight: bold;" styleClass="btn" stylesheets="@styles/application.css" text="Reset" textFill="WHITE">
                <font>
                   <Font name="Times New Roman" size="15.0" />
                </font>
