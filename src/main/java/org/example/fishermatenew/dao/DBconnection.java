@@ -38,6 +38,17 @@ public class DBconnection {
             "weather_condition VARCHAR(100)"+
     ")";
 
+    //create table for storing boatrides
+    String createhistoryTable = "CREATE TABLE IF NOT EXISTS history (" +
+
+            "date DATETIME NOT NULL, " +
+            "location VARCHAR(255) NOT NULL, " +
+            "time DATETIME NOT NULL, " +
+            "crewMembers INT NOT NULL" +
+            ");";
+
+
+
     public Connection getConnection() {
         String url = "jdbc:mysql://localhost:3306/fishermate";
         String username = "root";
@@ -57,6 +68,8 @@ public class DBconnection {
             System.out.println("Login table created successfully!");
             stmt.executeUpdate(createWeatherDataTable);
             System.out.println("weather table created successfully");
+            stmt.executeUpdate(createhistoryTable);
+            System.out.println("history table created successfully");
 
 
         } catch (SQLException e) {

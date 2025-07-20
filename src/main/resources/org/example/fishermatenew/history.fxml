@@ -22,6 +22,7 @@
                 <TableColumn fx:id="colLocation" text="Location" prefWidth="150.0"/>
                 <TableColumn fx:id="colTime" text="Time" prefWidth="100.0"/>
                 <TableColumn fx:id="colCrew" text="Crew Members" prefWidth="100.0"/>
+
             </columns>
         </TableView>
     </children>
