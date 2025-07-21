@@ -55,12 +55,12 @@
             </VBox>
          </VBox>
          
-            <Button fx:id="btnlogin" maxWidth="Infinity" onAction="#userLoging" style="-fx-background-color: white; -fx-background-radius: 10px; -fx-text-fill: green;" stylesheets="@styles/application.css" text="Sign In">
+            <Button fx:id="btnlogin" maxWidth="Infinity" onAction="#userLoging" style="-fx-background-color: white; -fx-background-radius: 10px; -fx-text-fill: to bottom right, #006994, #00334d; " styleClass="login-btn" stylesheets="@styles/application.css" text="Sign In">
             <font>
                <Font name="System Bold" size="12.0" />
             </font>
          </Button>
-         <Button fx:id="resetbtn" maxWidth="Infinity" onAction="#reset" style="-fx-background-color: white; -fx-text-fill: green; -fx-background-radius: 10px;" text="Reset">
+         <Button fx:id="resetbtn" maxWidth="Infinity" onAction="#reset" style="-fx-background-color: white; -fx-text-fill: to bottom right, #006994, #00334d; -fx-background-radius: 10px;" text="Reset">
             <font>
                <Font name="System Bold" size="12.0" />
             </font>
