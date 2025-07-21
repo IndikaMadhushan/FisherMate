@@ -26,6 +26,7 @@ import org.example.fishermatenew.models.FinalDecision;
 import org.example.fishermatenew.models.Inputs;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
@@ -391,7 +392,7 @@ public class AdminController implements Initializable {
     }
 
 
-    
+
     public void history(){
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("history.fxml"));
@@ -498,10 +499,29 @@ public class AdminController implements Initializable {
             histroypage.setVisible(false);
             ridespane.setVisible(true);
 
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/fishermatenew/interface.fxml"));
+                Node interfaceView = loader.load(); // This loads the FXML content
+
+                // Clear previous content and add the new FXML content
+                ridespane.getChildren().clear();
+                ridespane.getChildren().add(interfaceView);
+
+                // Optional: Anchor the loaded node to fill the ridespane
+                AnchorPane.setTopAnchor(interfaceView, 0.0);
+                AnchorPane.setBottomAnchor(interfaceView, 0.0);
+                AnchorPane.setLeftAnchor(interfaceView, 0.0);
+                AnchorPane.setRightAnchor(interfaceView, 0.0);
+
+
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
-    
+
     @Override
     public void initialize(java.net.URL url, java.util.ResourceBundle resourceBundle) {
         iDenter.setOnAction(event -> dataToDB());
@@ -543,7 +563,7 @@ public class AdminController implements Initializable {
         LocalDate date = iDdate.getValue();
         String time = iDtime.getValue();
         int crewMembers = Integer.parseInt(iDcrews.getText());
-       // int noOfDays = Integer.parseInt(iDmaxdays.getText());
+        // int noOfDays = Integer.parseInt(iDmaxdays.getText());
 
         if (location == null || date == null || time == null || crewMembers <= 0 ) {
             idMainMessage.setText("❌ Please fill in all the fields correctly.");
@@ -593,6 +613,6 @@ public class AdminController implements Initializable {
             }
         };
     }
-    }
+}
 
 
