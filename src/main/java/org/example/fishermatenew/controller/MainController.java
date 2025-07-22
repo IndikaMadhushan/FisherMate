@@ -11,12 +11,17 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import org.example.fishermatenew.dao.DBconnection;
 import org.example.fishermatenew.models.DateTimeIntergration;
 import org.example.fishermatenew.models.FinalDecision;
 import org.example.fishermatenew.models.Inputs;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Timestamp;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
@@ -158,6 +163,8 @@ public class MainController implements Initializable {
         inputData.setNoOfCrewMembers(crews);
         inputData.setMaxDays(maxDays);
 
+        saveToHistory(date, time, location, crews);
+
         // Get final result
         String result = FinalDecision.finalDecision(inputData);
         beforeEnter.setVisible(false);
@@ -197,18 +204,48 @@ public class MainController implements Initializable {
         handleResetButton(); // optional: reset fields
     }
 
+    public void saveToHistory(LocalDate date, String time, String location, int crews) {
+        // Combine date and time into Timestamp
+        String dateTimeString = date.toString() + " " + time; // "2025-07-21 03:00:00"
+        Timestamp dateTime;
+        try {
+            dateTime = Timestamp.valueOf(dateTimeString);
+        } catch (IllegalArgumentException e) {
+            System.out.println("❌ Invalid time format. Use HH:mm:ss (e.g., 03:00:00)");
+            return;
+        }
+
+        String sql = "INSERT INTO history (date, location, time, crewMembers) VALUES (?, ?, ?, ?)";
+
+        try {
+            DBconnection db = new DBconnection();
+            Connection conn = db.getConnection();
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+
+            pstmt.setTimestamp(1, dateTime); // for 'date' column
+            pstmt.setString(2, location);
+            pstmt.setTimestamp(3, dateTime); // for 'time' column
+            pstmt.setInt(4, crews);
+
+            pstmt.executeUpdate();
+            System.out.println("✅ Record saved to history table.");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
 
     @FXML
     public void handleResetButton() {
-            iDcrews.clear();
-            iDmaxdays.clear();
-            iDresults.clear();
-            iDlocation.setValue(null);
-            iDdate.setValue(null);
-            iDtime.setValue(null);
-            idMaxDayMessage.setText("");
-            idCrewMessage.setText("");
-            idMainMessage.setText("");
+        iDcrews.clear();
+        iDmaxdays.clear();
+        iDresults.clear();
+        iDlocation.setValue(null);
+        iDdate.setValue(null);
+        iDtime.setValue(null);
+        idMaxDayMessage.setText("");
+        idCrewMessage.setText("");
+        idMainMessage.setText("");
     }
 }
